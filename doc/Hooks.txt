@@ -1,0 +1,8 @@
+==VisualDiff.class.php==
+
+'VisualDiffRetrieveDiffRevision':
+&$this:
+ &$oOldRevision:
+ &$oDiffRevision:
+ $iOldId:
+ $iDiff:
