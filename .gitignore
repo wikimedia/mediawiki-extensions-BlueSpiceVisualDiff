@@ -1,0 +1,5 @@
+Thumbs.db
+/nbproject/private/
+composer.lock
+vendor
+nbproject/

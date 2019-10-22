@@ -1,0 +1,28 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robert Vogel <vogel@hallowelt.biz>"
+		]
+	},
+	"bs-visualdiff-extension-description": "Formatierte Darstellung der Unterschiede zwischen zwei Revisionen einer Seite.",
+	"prefs-VisualDiff": "Visual Diff",
+	"prefs-visualdiff": "Visual Diff",
+	"bs-VisualDiff-specialpage-heading": "Versionsvergleich $1",
+	"bs-VisualDiff-specialpage-heading-htmltitle": "Versionsvergleich",
+	"bs-VisualDiff-return-to-history": "Zur Versionsübersicht zurückkehren",
+	"bs-VisualDiff-compare-revisions-welcome": "Du vergleichst die folgenden zwei Revisionen:",
+	"bs-VisualDiff-edit": "bearbeiten",
+	"bs-VisualDiff-compare-with": "Vergleichen mit",
+	"bs-VisualDiff-baserevision-headline": "Basisrevision",
+	"bs-VisualDiff-diffrevision-headline": "Vergleichsrevision",
+	"bs-VisualDiff-error-oldid-invalid": "Die angegebene Basisrevison ist ungültig.",
+	"bs-VisualDiff-error-diff-invalid": "Die angegebene Vergleichsrevision ist ungültig.",
+	"bs-VisualDiff-popup-next": "Nächste&nbsp;Änderung",
+	"bs-VisualDiff-popup-prev": "Vorherige&nbsp;Änderung",
+	"bs-VisualDiff-classicdiffengine-tab": "Klassisch",
+	"bs-VisualDiff-htmldiffengine-tab": "Visuell",
+	"bs-VisualDiff-unifiedtextdiffengine-tab": "WikiText",
+	"bs-VisualDiff-removed_text": "Dieses Element wurde entfernt",
+	"bs-VisualDiff-added_text": "Dieses Element wurde hinzugefügt",
+	"bs-VisualDiff-changed_text": "Dieses Element hat sich verändert"
+}

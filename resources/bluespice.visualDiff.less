@@ -1,0 +1,122 @@
+
+#difftabs span[class^='diff-html-'] > img {
+	background-color: none;
+	border-width: 3px;
+	border-style:  solid;
+}
+
+#difftabs .diff-html-added > img{
+	border-color: #ccffcc;
+}
+
+#difftabs .diff-html-removed > img{
+	border-color: #fdc6c6;
+}
+
+#difftabs .diff-html-changed > img{
+	border-color: #c6c6fd;
+}
+
+#difftabs .diff-html-conflict > img{
+	border-color: #f781be;
+}
+
+
+#difftabslist {
+	display: table;
+	width: 100%;
+	margin-bottom: 0.5em;
+}
+
+#difftabs * {
+	box-sizing: border-box;
+}
+
+#difftabslist.ui-tabs-nav {
+	border: none;
+}
+
+#difftabs ul.ui-widget-header {
+	background-image: none;
+	background-color: #f7f7f7;
+}
+
+#difftabs div.ui-tabs-hide {
+	display: none;
+}
+
+#difftabslist > li.ui-state-default {
+	display: table-cell;
+	float: none;
+}
+
+#difftabslist > li > a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	padding: 0.4em;
+	text-align: center;
+	border-bottom: 3px solid;
+}
+
+body.mediawiki #content #difftabslist > li > a:hover {
+	text-decoration: none;
+}
+
+#difftabslist li.ui-state-active {
+	background-color: rgb(152, 167, 196);
+	a {
+		border-bottom-color: #FFAE00;
+	}
+}
+
+.UnifiedTextDiffEngine pre {
+	white-space: pre-wrap;
+	font-size: 14px;
+	padding: 3px;
+	margin: 0;
+	line-height: 1.3;
+	border: none;
+	background: none;
+}
+
+td.diff-otitle,
+td.diff-ntitle {
+	width: 50%;
+}
+
+table.revisiontable {
+	width: 100%;
+}
+
+.diff-html-removed,
+.diff-tag-removed {
+	background-color: #feeec8;
+	text-decoration: line-through;
+}
+
+.diff-html-added,
+.diff-tag-added {
+	background-color: #d8ecff;
+}
+
+.diff-html-changed {
+	border-bottom: 2px dashed #c6c6fd
+}
+
+span.diff-html-selected.diff-html-removed {
+	background-color: #FACE66;
+}
+
+span.diff-html-selected.diff-html-added {
+	background-color: #70BAFF;
+}
+
+span.diff-html-selected.diff-html-changed {
+	border-color: #7A7AFA;
+}
+
+div.UnifiedTextDiffEngine pre{
+	font-size: 80%;
+	font-weight: normal;
+}
