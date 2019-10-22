@@ -1,0 +1,72 @@
+{
+	"name": "BlueSpiceVisualDiff",
+	"version": "3.2.0-alpha",
+	"license-name": "GPL-3.0-only",
+	"url": "https://en.wiki.bluespice.com/wiki/Reference:VisualDiff",
+	"author": [
+		"Markus Glaser",
+		"Robert Vogel"
+	],
+	"descriptionmsg": "bs-visualdiff-extension-description",
+	"type": "bluespice",
+	"attributes": {
+		"BlueSpiceFoundation": {
+			"Extensions": {
+				"BlueSpiceVisualDiff": {
+					"className": "VisualDiff",
+					"extPath": "/BlueSpiceVisualDiff",
+					"package": "BlueSpice Pro"
+				}
+			}
+		}
+	},
+	"DefaultUserOptions": {
+		"diffonly": 0
+	},
+	"MessagesDirs": {
+		"BlueSpiceVisualDiff": [
+			"i18n"
+		]
+	},
+	"AutoloadClasses": {
+		"VisualDiff": "VisualDiff.class.php",
+		"HTMLDiffEngine": "includes/HTMLDiffEngine.class.php",
+		"UnifiedTextDiffEngine": "includes/UnifiedTextDiffEngine.class.php"
+	},
+	"ResourceModules": {
+		"ext.bluespice.visualDiff.styles": {
+			"styles": [
+				"bluespice.visualDiff.jquery.ui.less",
+				"bluespice.visualDiff.less"
+			]
+		},
+		"ext.bluespice.visualDiff": {
+			"scripts": [
+				"bluespice.visualDiff.tabs.js",
+				"bluespice.visualDiff.flyouts.js"
+			],
+			"messages": [
+				"bs-VisualDiff-removed_text",
+				"bs-VisualDiff-added_text",
+				"bs-VisualDiff-changed_text",
+				"bs-VisualDiff-popup-next",
+				"bs-VisualDiff-popup-prev"
+			],
+			"dependencies": [
+				"ext.bluespice.extjs",
+				"jquery.ui.tabs"
+			]
+		}
+	},
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "BlueSpiceVisualDiff/resources"
+	},
+	"config_prefix": "bsg",
+	"config": {
+		"VisualDiffHtmlDiffEngineUrl": {
+			"value": "http://localhost:8080/BShtmlDiff"
+		}
+	},
+	"manifest_version": 2
+}
