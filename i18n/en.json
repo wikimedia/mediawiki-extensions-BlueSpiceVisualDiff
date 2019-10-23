@@ -1,28 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"    Robert Vogel <vogel@hallowelt.biz>"
+			"Robert Vogel"
 		]
 	},
 	"bs-visualdiff-extension-description": "Formatted display of differences between two revisions.",
-	"prefs-VisualDiff": "Visual diff",
-	"prefs-visualdiff": "Visual diff",
-	"bs-VisualDiff-specialpage-heading": "Version comparison $1",
-	"bs-VisualDiff-specialpage-heading-htmltitle": "Version comparison",
-	"bs-VisualDiff-return-to-history": "Return to history page",
-	"bs-VisualDiff-compare-revisions-welcome": "You compare the following two revisions:",
-	"bs-VisualDiff-edit": "edit",
-	"bs-VisualDiff-compare-with": "Compare with",
-	"bs-VisualDiff-baserevision-headline": "Base revision",
-	"bs-VisualDiff-diffrevision-headline": "Diff revision",
-	"bs-VisualDiff-error-oldid-invalid": "The provided base revision is invalid.",
-	"bs-VisualDiff-error-diff-invalid": "The provided diff revision is invalid.",
-	"bs-VisualDiff-popup-next": "Next&nbsp;change",
-	"bs-VisualDiff-popup-prev": "Previous&nbsp;change",
-	"bs-VisualDiff-classicdiffengine-tab": "Classic",
-	"bs-VisualDiff-htmldiffengine-tab": "Visual",
-	"bs-VisualDiff-unifiedtextdiffengine-tab": "WikiText",
-	"bs-VisualDiff-removed_text": "This element has been removed",
-	"bs-VisualDiff-added_text": "This element has been added",
-	"bs-VisualDiff-changed_text": "This element has been changed"
+	"bs-visualdiff-return-to-history": "Return to history page",
+	"bs-visualdiff-error-oldid-invalid": "The provided base revision is invalid.",
+	"bs-visualdiff-error-diff-invalid": "The provided diff revision is invalid.",
+	"bs-visualdiff-popup-next": "Next&nbsp;change",
+	"bs-visualdiff-popup-prev": "Previous&nbsp;change",
+	"bs-visualdiff-classicdiffengine-tab": "Classic",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
+	"bs-visualdiff-removed-text": "This element has been removed",
+	"bs-visualdiff-added-text": "This element has been added",
+	"bs-visualdiff-changed-text": "This element has been changed"
 }

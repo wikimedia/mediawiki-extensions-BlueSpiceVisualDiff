@@ -14,13 +14,13 @@ Ext.define( 'BS.VisualDiff.tip.Change', {
 		var text = '';
 
 		if(cfg.$target.hasClass( 'diff-html-added' ) ) {
-			text = mw.message('bs-VisualDiff-added_text').plain();
+			text = mw.message('bs-visualdiff-added-text').plain();
 		}
 		else if( cfg.$target.hasClass( 'diff-html-removed' ) ) {
-			text = mw.message('bs-VisualDiff-removed_text').plain();
+			text = mw.message('bs-visualdiff-removed-text').plain();
 		}
 		else {
-			text = mw.message('bs-VisualDiff-changed_text').plain();
+			text = mw.message('bs-visualdiff-changed-text').plain();
 		}
 
 		this.html = text;
@@ -30,13 +30,13 @@ Ext.define( 'BS.VisualDiff.tip.Change', {
 
 	initComponent: function() {
 		this.btnNext = new Ext.Button({
-			tooltip: mw.message('bs-VisualDiff-popup-next').plain(),
+			tooltip: mw.message('bs-visualdiff-popup-next').plain(),
 			iconCls: 'x-tbar-page-next'
 		});
 		this.btnNext.on( 'click', this.onBtnNextClick, this );
 
 		this.btnPrev = new Ext.Button({
-			tooltip: mw.message('bs-VisualDiff-popup-prev').plain(),
+			tooltip: mw.message('bs-visualdiff-popup-prev').plain(),
 			iconCls: 'x-tbar-page-prev'
 		});
 		this.btnPrev.on( 'click', this.onBtnPrevClick, this );
