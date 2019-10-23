@@ -101,7 +101,6 @@ class HTMLDiffEngine {
 		// TODO RBV (19.06.12 15:05): Use API to render?
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
 		$oParserOptions = ParserOptions::newFromUser( $wgUser ); // TODO RBV (21.06.12 12:08): To the contructor?
-		$oParserOptions->setEditSection( false );
 		$oParserOutput = $wgParser->parse(
 			ContentHandler::getContentText( $oRevision->getContent() ),
 			$oRevision->getTitle(),
@@ -110,7 +109,9 @@ class HTMLDiffEngine {
 
 		$sFilePath = "$sTmpPath/{$oRevision->getId()}.html";
 
-		file_put_contents( $sFilePath, $oParserOutput->getText() );
+		file_put_contents( $sFilePath, $oParserOutput->getText( [
+			'enableSectionEditLinks' => false
+		] ) );
 		return $sFilePath;
 	}
 
