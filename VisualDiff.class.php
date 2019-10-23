@@ -164,7 +164,7 @@ HEREDOC;
 		$aClassicDiff = $this->processClassicDiff($sClassicDiff);
 
 		if( $oOldRevision == null ) { //If the provided base revision is invalid: abort.
-			$output->addHTML( wfMessage('bs-VisualDiff-error-oldid-invalid')->escaped() );
+			$output->addHTML( wfMessage('bs-visualdiff-error-oldid-invalid')->escaped() );
 			return true;
 		}
 
@@ -174,7 +174,7 @@ HEREDOC;
 		$output->setSubtitle(
 			Linker::link(
 				$oReturnToTitle,
-				wfMessage('bs-VisualDiff-return-to-history')->plain(),
+				wfMessage('bs-visualdiff-return-to-history')->plain(),
 				array(),
 				array( 'action' => 'history' ),
 				array( 'known', 'noclasses' )
@@ -197,7 +197,7 @@ HEREDOC;
 		}
 
 		if( $oDiffRevision == null ) { //If the revision that should be compared with the base revision is invalid: abort.
-			$output->addHTML( wfMessage('bs-VisualDiff-error-diff-invalid')->escaped() );
+			$output->addHTML( wfMessage('bs-visualdiff-error-diff-invalid')->escaped() );
 			return true;
 		}
 
@@ -213,8 +213,8 @@ HEREDOC;
 			$oEngine = new $sEngineClass();
 			$aTabList[] =
 			'<li class="ui-state-default ui-corner-top"><a href="#'.$sEngineClass.'">'
-				//bs-VisualDiff-htmldiffengine-tab, bs-VisualDiff-unifiedtextdiffengine-tab
-				. wfMessage('bs-VisualDiff-'.strtolower( $sEngineClass ).'-tab')->escaped()
+				//bs-visualdiff-htmldiffengine-tab, bs-visualdiff-unifiedtextdiffengine-tab
+				. wfMessage('bs-visualdiff-'.strtolower( $sEngineClass ).'-tab')->escaped()
 			.'</a></li>';
 			$aDiffs[] = '<div id="'.$sEngineClass.'" class="diffcontainer">';
 			//$aDiffs[] = $sDiffHead;
@@ -223,7 +223,7 @@ HEREDOC;
 		}
 
 		$aTabList[] = '<li class="ui-state-default ui-corner-top"><a href="#ClassicDiffEngine">'
-			. wfMessage('bs-VisualDiff-classicdiffengine-tab')->escaped()
+			. wfMessage('bs-visualdiff-classicdiffengine-tab')->escaped()
 		.'</a></li>';
 		$aTabList[] = '</ul>';
 

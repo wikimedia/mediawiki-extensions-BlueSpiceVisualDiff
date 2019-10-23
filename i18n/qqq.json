@@ -1,7 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robert Vogel <vogel@hallowelt.biz>"
+			"Patric Wirth"
 		]
-	}
+	},
+	"bs-visualdiff-extension-description": "{{desc|name=BlueSpiceSocial}}",
+	"bs-visualdiff-return-to-history": "Link label that returns to history page",
+	"bs-visualdiff-error-oldid-invalid": "Error message that states, that the provided base revision is invalid.",
+	"bs-visualdiff-error-diff-invalid": "Error message that states, that the provided diff revision is invalid.",
+	"bs-visualdiff-popup-next": "Tooltip text for oojsUI button, that moves to the next change. Spaces should be replaced with &nbsp; to prevent line breaks.\n{{Identical|Next&nbsp;change}}",
+	"bs-visualdiff-popup-prev": "Tooltip text for oojsUI button, that moves to the previous change. Spaces should be replaced with &nbsp; to prevent line breaks.\n{{Identical|Previous&nbsp;change}}",
+	"bs-visualdiff-classicdiffengine-tab": "Label for the tab, that displays differences using the default diff engine.\n{{Identical|Classic}}",
+	"bs-visualdiff-htmldiffengine-tab": "Label for the tab, that displays differences using the visual diff engine service.\n{{Identical|Visual}}",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Label for the tab, that displays differences using raw wikitext.\n{{Identical|WikiText}}",
+	"bs-visualdiff-removed-text": "Info text in oojsUI that states, that the target element - this shows the differences against - has been removed.",
+	"bs-visualdiff-added-text": "Info text in oojsUI that states, that the target element - this shows the differences against - has been added.",
+	"bs-visualdiff-changed-text": "Info text in oojsUI that states, that the target element - this shows the differences against - has been changed."
 }
