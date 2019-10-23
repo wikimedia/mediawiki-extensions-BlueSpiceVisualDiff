@@ -46,11 +46,11 @@
 				"bluespice.visualDiff.flyouts.js"
 			],
 			"messages": [
-				"bs-VisualDiff-removed_text",
-				"bs-VisualDiff-added_text",
-				"bs-VisualDiff-changed_text",
-				"bs-VisualDiff-popup-next",
-				"bs-VisualDiff-popup-prev"
+				"bs-visualdiff-removed-text",
+				"bs-visualdiff-added-text",
+				"bs-visualdiff-changed-text",
+				"bs-visualdiff-popup-next",
+				"bs-visualdiff-popup-prev"
 			],
 			"dependencies": [
 				"ext.bluespice.extjs",
