@@ -1,5 +1,7 @@
 <?php
 
+use Wikimedia\AtEase\AtEase;
+
 class HTMLDiffEngine {
 
 	/**
@@ -120,7 +122,8 @@ class HTMLDiffEngine {
 	 * @param type $sOutfile
 	 */
 	protected function cleanResultHTML( $sOutfile ) {
-		wfSuppressWarnings(); //In a diff html there may be duplicate IDs which results in warnings
+		// In a diff html there may be duplicate IDs which results in warnings
+		AtEase::suppressWarnings();
 		$oDOM = new DOMDocument();
 		$oDOM->loadHTMLFile( $sOutfile );
 		$oDOM->formatOutput = true;
@@ -170,7 +173,7 @@ class HTMLDiffEngine {
 			'',
 			$oDOM->saveHTML()
 		);
-		wfRestoreWarnings();
+		AtEase::suppressWarnings( true );
 		file_put_contents( $sOutfile, $sResultContent );
 	}
 }
