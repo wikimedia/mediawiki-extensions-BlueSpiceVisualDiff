@@ -9,37 +9,43 @@ class HTMLDiffEngine {
 	 * @return string The HTML for display in diff
 	 */
 	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
-
-		//Now let's get the diff
-		BsFileSystemHelper::ensureCacheDirectory( VisualDiff::$sVisualDiffFolderName );  // ensure that the directory exits, otherwise create it
+		// Now let's get the diff
+		// ensure that the directory exits, otherwise create it
+		BsFileSystemHelper::ensureCacheDirectory( VisualDiff::$sVisualDiffFolderName );
 		$sTmpPath = BsFileSystemHelper::getCacheDirectory( VisualDiff::$sVisualDiffFolderName );
-		$this->cleanTmpPath( $sTmpPath ); // TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
+		// TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
+		$this->cleanTmpPath( $sTmpPath );
 
-		$sResultFile  = $sTmpPath.'/result_'.$oOldRevision->getId().'_'.$oDiffRevision->getId().'.html';
+		$sResultFile = $sTmpPath
+			. '/result_'
+			. $oOldRevision->getId()
+			. '_'
+			. $oDiffRevision->getId()
+			. '.html';
 
-		if( file_exists( $sResultFile ) ){ //In this case we don't need to recalculate
-			wfDebugLog( 'VisualDiff', 'Using file '.$sResultFile.' from cache');
+		if ( file_exists( $sResultFile ) ) {
+			// In this case we don't need to recalculate
+			wfDebugLog( 'VisualDiff', 'Using file ' . $sResultFile . ' from cache' );
 			return $this->outputVisualDiff( $sResultFile );
 		}
 
-		//Get the HTML strings
+		// Get the HTML strings
 		$sOldHTML  = $this->getRevisionHTML( $oOldRevision, $sTmpPath );
 		$sDiffHTML = $this->getRevisionHTML( $oDiffRevision, $sTmpPath );
 
-
-		$aParams = array(
+		$aParams = [
 			'type' => 'html',
 			'wikiId' => wfWikiID()
-		);
+		];
 		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
-		if( $config->get( 'TestMode' ) ) {
+		if ( $config->get( 'TestMode' ) ) {
 			$aParams['debug'] = "true";
 		}
 
 		$sUrl = wfAppendQuery(
-			$config->get( 'VisualDiffHtmlDiffEngineUrl' ).'/RenderDiff',
+			$config->get( 'VisualDiffHtmlDiffEngineUrl' ) . '/RenderDiff',
 			$aParams
 		);
 
@@ -47,20 +53,20 @@ class HTMLDiffEngine {
 		Http::$httpEngine = 'curl';
 		$oRequest = MWHttpRequest::factory(
 			wfExpandUrl( $sUrl ),
-			array(
+			[
 				'timeout' => 120,
 				'method' => 'POST',
-				'postData' => array(
-					'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldHTML ) : '@'.$sOldHTML,
-					'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffHTML ) : '@'.$sDiffHTML
-				)
-			)
+				'postData' => [
+					'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldHTML ) : '@' . $sOldHTML,
+					'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffHTML ) : '@' . $sDiffHTML
+				]
+			]
 		);
 		Http::$httpEngine = $vHttpEngine;
 
 		$oStatus = $oRequest->execute();
 
-		if( !$oStatus->isOK() ) {
+		if ( !$oStatus->isOK() ) {
 			throw new MWException( $oStatus->getMessage() );
 		}
 
@@ -71,36 +77,50 @@ class HTMLDiffEngine {
 		return $this->outputVisualDiff( $sResultFile );
 	}
 
+	/**
+	 *
+	 * @param string $outfile
+	 * @return string
+	 */
 	protected function outputVisualDiff( $outfile ) {
 		$resulttext = file_get_contents( $outfile );
 		return $resulttext;
 	}
 
+	/**
+	 *
+	 * @param string $sPath
+	 */
 	protected function cleanTmpPath( $sPath ) {
 		$oDirIterator = new DirectoryIterator( $sPath );
-		foreach( $oDirIterator as $oFileInfo ) {
-			if( $oFileInfo->isDir() || $oFileInfo->isDot() ) continue;
-			// TODO RBV (21.06.12 14:38): Maybe we should _not_ delete the "result_" files as they will never ever change...
-			if( $oFileInfo->getMTime() < time() - 3600 * 24 * 5 ) { //Older than 5 days?
-				wfDebugLog( 'VisualDiff', 'Removed file '.$oFileInfo->getRealPath() );
-				unlink( $oFileInfo->getRealPath() ); // TODO RBV (19.06.12 15:47): SPL?
+		foreach ( $oDirIterator as $oFileInfo ) {
+			if ( $oFileInfo->isDir() || $oFileInfo->isDot() ) {
+				continue;
+			}
+			// TODO RBV (21.06.12 14:38): Maybe we should _not_ delete the "result_"
+			// files as they will never ever change...
+			if ( $oFileInfo->getMTime() < time() - 3600 * 24 * 5 ) {
+				// Older than 5 days?
+				wfDebugLog( 'VisualDiff', 'Removed file ' . $oFileInfo->getRealPath() );
+				// TODO RBV (19.06.12 15:47): SPL?
+				unlink( $oFileInfo->getRealPath() );
 			}
 		}
 	}
 
 	/**
 	 * Renders the HTML of a Revision that should be compared
-	 * @global Parser $wgParser
-	 * @global User $wgUser
 	 * @param Revision $oRevision
 	 * @param string $sTmpPath
 	 * @return string The revisions HTML representation
 	 */
 	protected function getRevisionHTML( $oRevision, $sTmpPath ) {
+		// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgParser
 		global $wgUser, $wgParser;
 		// TODO RBV (19.06.12 15:05): Use API to render?
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
-		$oParserOptions = ParserOptions::newFromUser( $wgUser ); // TODO RBV (21.06.12 12:08): To the contructor?
+		// TODO RBV (21.06.12 12:08): To the contructor?
+		$oParserOptions = ParserOptions::newFromUser( $wgUser );
 		$oParserOptions->setEditSection( false );
 		$oParserOutput = $wgParser->parse(
 			ContentHandler::getContentText( $oRevision->getContent() ),
@@ -126,46 +146,56 @@ class HTMLDiffEngine {
 
 		$oDOMXPath = new DOMXPath( $oDOM );
 		$oRemoveClassElements = $oDOMXPath->query( '//*[contains(@class, "diff-topbar")]' );
-		$aRemoveClassElements = array();
-		foreach( $oRemoveClassElements as $oRemoveClassElement ) { $aRemoveClassElements[] = $oRemoveClassElement; }
-		foreach( $aRemoveClassElements as $oRemoveClassElement ) {
+		$aRemoveClassElements = [];
+		foreach ( $oRemoveClassElements as $oRemoveClassElement ) {
+			$aRemoveClassElements[] = $oRemoveClassElement;
+		}
+		foreach ( $aRemoveClassElements as $oRemoveClassElement ) {
 			$oRemoveClassElement->parentNode->removeChild( $oRemoveClassElement );
 		}
 
-		//Remove script-Tags
+		// Remove script-Tags
 		$oScripts = $oDOM->getElementsByTagName( 'script' );
-		$aScripts = array();
-		foreach( $oScripts as $oScript ) { $aScripts[] = $oScript; } //Due to 'live' character of NodeList we have to build an array to avoid iterator issues
-		foreach( $aScripts as $oScriptElement ) {
+		$aScripts = [];
+		foreach ( $oScripts as $oScript ) {
+			// Due to 'live' character of NodeList we have to build an array to avoid
+			// iterator issues
+			$aScripts[] = $oScript;
+		}
+		foreach ( $aScripts as $oScriptElement ) {
 			$oScriptElement->parentNode->removeChild( $oScriptElement );
 		}
 
 		$oElements = $oDOMXPath->query( '//span|//img' );
-		foreach( $oElements as $oElement ) {
-			$sClass = $oElement->getAttribute('class');
+		foreach ( $oElements as $oElement ) {
+			$sClass = $oElement->getAttribute( 'class' );
 			// TODO RBV (03.08.12 15:08): Maybe model this into XPath?
-			if( !in_array( $sClass, array('diff-html-removed', 'diff-html-added', 'diff-html-changed') ) && $oElement->nodeName != 'img' ) continue;
+			if ( !in_array( $sClass, [ 'diff-html-removed', 'diff-html-added', 'diff-html-changed' ] )
+				&& $oElement->nodeName != 'img' ) {
+				continue;
+			}
 
-			//Let's build standard conformant attributes
-			$aModAttr = array('previous', 'next', 'changeid', 'changes', 'changetype' );
-			foreach( $aModAttr as $sAttr ) {
-				if( !$oElement->hasAttribute($sAttr) ) continue;
-				$oElement->setAttribute('data-'.$sAttr, $oElement->getAttribute( $sAttr ));
+			// Let's build standard conformant attributes
+			$aModAttr = [ 'previous', 'next', 'changeid', 'changes', 'changetype' ];
+			foreach ( $aModAttr as $sAttr ) {
+				if ( !$oElement->hasAttribute( $sAttr ) ) { continue;
+				}
+				$oElement->setAttribute( 'data-' . $sAttr, $oElement->getAttribute( $sAttr ) );
 				$oElement->removeAttribute( $sAttr );
 			}
 
-			$oElement->removeAttribute('onclick');
-			$oElement->removeAttribute('onload');
-			$oElement->removeAttribute('onabort');
-			$oElement->removeAttribute('onerror');
+			$oElement->removeAttribute( 'onclick' );
+			$oElement->removeAttribute( 'onload' );
+			$oElement->removeAttribute( 'onabort' );
+			$oElement->removeAttribute( 'onerror' );
 		}
 
 		// TODO RBV (01.08.12 13:31): Find a DOM way to do this... :(
 		$sResultContent = preg_replace(
-			array(
+			[
 				'#(<!DOCTYPE.*?<html>.*?<body>)#si',
 				'#(<\/body>.*?<\/html>)#si'
-			),
+			],
 			'',
 			$oDOM->saveHTML()
 		);
