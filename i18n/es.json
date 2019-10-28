@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Canaan9801"
+		]
+	},
+	"bs-visualdiff-extension-description": "Visualización formateada de diferencias entre dos revisiones.",
+	"bs-visualdiff-return-to-history": "Regresar a la página de historia.",
+	"bs-visualdiff-error-oldid-invalid": "La revisión de base provista no es válida.",
+	"bs-visualdiff-error-diff-invalid": "La revisión diff provista no es válida.",
+	"bs-visualdiff-classicdiffengine-tab": "Clásico",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
+	"bs-visualdiff-removed-text": "Se ha quitado este elemento.",
+	"bs-visualdiff-added-text": "Se ha añadido este elemento.",
+	"bs-visualdiff-changed-text": "Se ha cambiado este elemento"
+}

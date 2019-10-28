@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"ديفيد"
+		]
+	},
+	"bs-visualdiff-extension-description": "عرض منسق للاختلافات بين مراجعتين.",
+	"bs-visualdiff-return-to-history": "العودة إلى صفحة التاريخ",
+	"bs-visualdiff-error-oldid-invalid": "المراجعة الأساسية المقدمة غير صالحة.",
+	"bs-visualdiff-error-diff-invalid": "مراجعة الفرق المقدمة غير صالحة.",
+	"bs-visualdiff-popup-next": "التغيير&nbsp;التالي",
+	"bs-visualdiff-popup-prev": "التغيير&nbsp;السابق",
+	"bs-visualdiff-classicdiffengine-tab": "كلاسيكي",
+	"bs-visualdiff-htmldiffengine-tab": "مرئي",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "نص الويكي",
+	"bs-visualdiff-removed-text": "تمت إزالة هذا العنصر",
+	"bs-visualdiff-added-text": "تمت إضافة هذا العنصر",
+	"bs-visualdiff-changed-text": "تم تغيير هذا العنصر"
+}
