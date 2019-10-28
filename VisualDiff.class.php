@@ -36,37 +36,41 @@
  */
 class VisualDiff extends BsExtensionMW {
 
-	protected $aEngines = array('HTMLDiffEngine', 'UnifiedTextDiffEngine');
+	protected $aEngines = [ 'HTMLDiffEngine', 'UnifiedTextDiffEngine' ];
 	public static $sVisualDiffFolderName = 'VisualDiff';
 
 	/**
 	 * Initialization of VisualDiff extension
 	 */
 	public function  initExt() {
-		//Hooks
-		$this->setHook( 'BSUEModulePDFBeforeAddingStyleBlocks', 'onBSUEModulePDFBeforeAddingStyleBlocks' );
-		$this->setHook( 'BSUEModulePDFBeforeCreatePDF', 'onBSUEModulePDFBeforeCreatePDF' );
+		// Hooks
+		$this->setHook(
+			'BSUEModulePDFBeforeAddingStyleBlocks',
+			'onBSUEModulePDFBeforeAddingStyleBlocks'
+		);
+		$this->setHook(
+			'BSUEModulePDFBeforeCreatePDF',
+			'onBSUEModulePDFBeforeCreatePDF'
+		);
 
 		global $wgHooks;
-		if( isset( $wgHooks['ArticleContentOnDiff'] ) && is_array( $wgHooks['ArticleContentOnDiff'] ) ){
-			//Execute before everything else, i.e. FlaggedRevs //TODO: In FlaggedRevsConnector?
-			array_unshift( $wgHooks['ArticleContentOnDiff'], array( $this, 'onArticleContentOnDiff' ) );
-		}
-		else {
+		if ( isset( $wgHooks['ArticleContentOnDiff'] )
+			&& is_array( $wgHooks['ArticleContentOnDiff'] ) ) {
+			// Execute before everything else, i.e. FlaggedRevs //TODO: In FlaggedRevsConnector?
+			array_unshift( $wgHooks['ArticleContentOnDiff'], [ $this, 'onArticleContentOnDiff' ] );
+		} else {
 			$this->setHook( 'ArticleContentOnDiff' );
 		}
-
 	}
 
 	/**
 	 * Embeds CSS into pdf export
-	 * @param array $aTemplate
-	 * @param array $aStyleBlocks
-	 * @return boolean Always true to keep hook running
+	 * @param array &$aTemplate
+	 * @param array &$aStyleBlocks
+	 * @return bool Always true to keep hook running
 	 */
 	public function onBSUEModulePDFBeforeAddingStyleBlocks( &$aTemplate, &$aStyleBlocks ) {
-
-		//Welcome to ResourceLoader changes -.-
+		// Welcome to ResourceLoader changes -.-
 		$sFile = __DIR__ . '/resources/bluespice.visualDiff.less';
 
 		$oConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
@@ -96,12 +100,12 @@ HEREDOC;
 	/**
 	 * Get global LESS variables.
 	 *
-	 * @param Config $config
+	 * @param Config|null $config
 	 * @since 1.22
 	 * @return array Map of variable names to string CSS values.
 	 */
 	public static function getLessVars( Config $config = null ) {
-		if( is_null($config) ) {
+		if ( is_null( $config ) ) {
 			$config = $oConfig = ConfigFactory::getDefaultInstance()
 				->makeConfig( 'main' );
 		}
@@ -113,14 +117,18 @@ HEREDOC;
 	 * @param BsExportModulePDF $oModule
 	 * @param DOMDocument $oDOM
 	 * @param SpecialUniversalExport $oCaller
-	 * @return boolean Always true to keep hook running
+	 * @return bool Always true to keep hook running
 	 */
 	public function onBSUEModulePDFBeforeCreatePDF( $oModule, $oDOM, $oCaller ) {
-		$oDOMXPath = new DOMXPath($oDOM);
+		$oDOMXPath = new DOMXPath( $oDOM );
 		$oContainerElements = $oDOMXPath->query( "//*[contains(@class, 'diffcontainer')]" );
-		foreach( $oContainerElements as $oContainerElement ) {
-			if( $oContainerElement->getAttribute('id') == $oCaller->aParams['difftab'] ) continue; //Keep user selected
-			$oContainerElement->parentNode->removeChild( $oContainerElement ); //Remove all other
+		foreach ( $oContainerElements as $oContainerElement ) {
+			if ( $oContainerElement->getAttribute( 'id' ) == $oCaller->aParams['difftab'] ) {
+				// Keep user selected
+				continue;
+			}
+			// Remove all other
+			$oContainerElement->parentNode->removeChild( $oContainerElement );
 		}
 		return true;
 	}
@@ -130,120 +138,132 @@ HEREDOC;
 	 * $user->getBoolOption( 'diffonly' ) === false
 	 * @param DifferenceEngine $diffEngine
 	 * @param OutputPage $output
-	 * @return boolean
+	 * @return bool
 	 */
 	public function onArticleContentOnDiff( $diffEngine, $output ) {
-		$output->addModules('ext.bluespice.visualDiff');
-		$output->addModuleStyles('ext.bluespice.visualDiff.styles');
+		$output->addModules( 'ext.bluespice.visualDiff' );
+		$output->addModuleStyles( 'ext.bluespice.visualDiff.styles' );
 
 		$oCurrentTitle = $output->getTitle();
 
 		$iOldId = $this->getRequest()->getInt( 'oldid', 0 );
 		$iDiff  = $this->getRequest()->getVal( 'diff', '0' );
 
-		if( $iDiff === '0' ) {
+		if ( $iDiff === '0' ) {
 			$iDiff = $oCurrentTitle->getLatestRevID();
 		}
 
-		//Fallback to latest revision. In some caeses only "diff" is set, but not "oldid".
-		if( $iOldId === 0 ) {
+		// Fallback to latest revision. In some caeses only "diff" is set, but not "oldid".
+		if ( $iOldId === 0 ) {
 			$oOldRevision = Revision::newFromId( $iDiff );
-			//This prevents the code from breaking if there is only one
-			//revision yet --> We cannot diff
-			if( $oOldRevision === null) {
+			// This prevents the code from breaking if there is only one
+			// revision yet --> We cannot diff
+			if ( $oOldRevision === null ) {
 				return true;
 			}
 			$oOldRevision = $oOldRevision->getPrevious();
-		}
-		else {
+		} else {
 			$oOldRevision = Revision::newFromId( $iOldId );
 		}
 
 		$sClassicDiff = $output->getHTML();
 		$output->clearHTML();
-		$aClassicDiff = $this->processClassicDiff($sClassicDiff);
+		$aClassicDiff = $this->processClassicDiff( $sClassicDiff );
 
-		if( $oOldRevision == null ) { //If the provided base revision is invalid: abort.
-			$output->addHTML( wfMessage('bs-visualdiff-error-oldid-invalid')->escaped() );
+		if ( $oOldRevision == null ) {
+			// If the provided base revision is invalid: abort.
+			$output->addHTML( wfMessage( 'bs-visualdiff-error-oldid-invalid' )->escaped() );
 			return true;
 		}
 
-		//TODO: Why not $oCurrentTitle?
-		//So the base revision is okay? Let's build the page.
+		// TODO: Why not $oCurrentTitle?
+		// So the base revision is okay? Let's build the page.
 		$oReturnToTitle = $oOldRevision->getTitle();
 		$output->setSubtitle(
 			Linker::link(
 				$oReturnToTitle,
-				wfMessage('bs-visualdiff-return-to-history')->plain(),
-				array(),
-				array( 'action' => 'history' ),
-				array( 'known', 'noclasses' )
+				wfMessage( 'bs-visualdiff-return-to-history' )->plain(),
+				[],
+				[ 'action' => 'history' ],
+				[ 'known', 'noclasses' ]
 			)
 		);
 		$output->addBacklinkSubtitle( $output->getTitle() );
 
-		$oDiffRevision = Revision::newFromId( $iDiff ); //maybe null if !is_nummeric( $iDiff ) == false
-		//$oDiffRevision may be changed by some other Extension like FlaggedRevsConnector (i.e 'cur' means 'last stable' instead of 'last revision')
-		if( \Hooks::run( 'VisualDiffRetrieveDiffRevision', array( &$this, &$oOldRevision, &$oDiffRevision, $iOldId, $iDiff ) ) ) {
-			if( $iDiff == 'next' ) {
+		// maybe null if !is_nummeric( $iDiff ) == false
+		$oDiffRevision = Revision::newFromId( $iDiff );
+		// $oDiffRevision may be changed by some other Extension like
+		// FlaggedRevsConnector (i.e 'cur' means 'last stable' instead of 'last revision')
+		$visualDiff = $this;
+		$res = Hooks::run( 'VisualDiffRetrieveDiffRevision', [
+			&$visualDiff,
+			&$oOldRevision,
+			&$oDiffRevision,
+			$iOldId,
+			$iDiff
+		] );
+		if ( $res ) {
+			if ( $iDiff == 'next' ) {
 				$oDiffRevision = $oOldRevision->getNext();
-			}else if( $iDiff == 'prev' ) {
+			} elseif ( $iDiff == 'prev' ) {
 				$oDiffRevision = $oOldRevision->getPrevious();
-			}else if( $iDiff == 'cur' ) {
+			} elseif ( $iDiff == 'cur' ) {
 				$oDiffRevision = Revision::newFromId(
 					$oOldRevision->getTitle()->getLatestRevID()
 				);
 			}
 		}
 
-		if( $oDiffRevision == null ) { //If the revision that should be compared with the base revision is invalid: abort.
-			$output->addHTML( wfMessage('bs-visualdiff-error-diff-invalid')->escaped() );
+		if ( $oDiffRevision == null ) {
+			// If the revision that should be compared with the base revision is invalid: abort.
+			$output->addHTML( wfMessage( 'bs-visualdiff-error-diff-invalid' )->escaped() );
 			return true;
 		}
 
-		//HINT: $diffEngine->getOldid();$diffEngine->getNewid(); ???
-		//Base revision and diff revison are okay? Render the navigation and the headline.
-		//$sDiffHead = $this->renderDiffHead( $diffEngine, $oOldRevision, $oDiffRevision );
+		// HINT: $diffEngine->getOldid();$diffEngine->getNewid(); ???
+		// Base revision and diff revison are okay? Render the navigation and the headline.
+		// $sDiffHead = $this->renderDiffHead( $diffEngine, $oOldRevision, $oDiffRevision );
 
-		$aTabList = array();
-		$aDiffs   = array();
+		$aTabList = [];
+		$aDiffs   = [];
 		$aTabList[] = '<ul id="difftabslist" class="ui-tabs-nav">';
 
-		foreach( $this->aEngines as $sEngineClass ) {
+		foreach ( $this->aEngines as $sEngineClass ) {
 			$oEngine = new $sEngineClass();
 			$aTabList[] =
-			'<li class="ui-state-default ui-corner-top"><a href="#'.$sEngineClass.'">'
-				//bs-visualdiff-htmldiffengine-tab, bs-visualdiff-unifiedtextdiffengine-tab
-				. wfMessage('bs-visualdiff-'.strtolower( $sEngineClass ).'-tab')->escaped()
-			.'</a></li>';
-			$aDiffs[] = '<div id="'.$sEngineClass.'" class="diffcontainer">';
-			//$aDiffs[] = $sDiffHead;
-			$aDiffs[] =  $oEngine->showDiffPage( $oOldRevision, $oDiffRevision );
+			'<li class="ui-state-default ui-corner-top"><a href="#' . $sEngineClass . '">'
+				// bs-visualdiff-htmldiffengine-tab, bs-visualdiff-unifiedtextdiffengine-tab
+				. wfMessage( 'bs-visualdiff-' . strtolower( $sEngineClass ) . '-tab' )->escaped()
+			. '</a></li>';
+			$aDiffs[] = '<div id="' . $sEngineClass . '" class="diffcontainer">';
+			// $aDiffs[] = $sDiffHead;
+			$aDiffs[] = $oEngine->showDiffPage( $oOldRevision, $oDiffRevision );
 			$aDiffs[] = '</div>';
 		}
 
 		$aTabList[] = '<li class="ui-state-default ui-corner-top"><a href="#ClassicDiffEngine">'
-			. wfMessage('bs-visualdiff-classicdiffengine-tab')->escaped()
-		.'</a></li>';
+			. wfMessage( 'bs-visualdiff-classicdiffengine-tab' )->escaped()
+		. '</a></li>';
 		$aTabList[] = '</ul>';
 
 		$output->addHTML( $aClassicDiff['headeritems'] );
 		$output->addHTML( $aClassicDiff['revisiontable'] );
-		$output->addHTML('<div id="difftabs" class="ui-widget ui-tabs">');
+		$output->addHTML( '<div id="difftabs" class="ui-widget ui-tabs">' );
 		$output->addHTML( implode( "\n", $aTabList ) );
 		$output->addHTML( implode( "\n", $aDiffs ) );
 
-		//Add the classic diff
-		$output->addHTML('<div id="ClassicDiffEngine" class="diffcontainer">');
-		$output->addHTML($aClassicDiff['difftable']);
-		$output->addHTML('</div>');
-		$output->addHTML('</div>'); // #difftabs
-		$output->addHTML($aClassicDiff['afterdiff']);
+		// Add the classic diff
+		$output->addHTML( '<div id="ClassicDiffEngine" class="diffcontainer">' );
+		$output->addHTML( $aClassicDiff['difftable'] );
+		$output->addHTML( '</div>' );
+		// #difftabs
+		$output->addHTML( '</div>' );
+		$output->addHTML( $aClassicDiff['afterdiff'] );
 
-		//As we return false at the end of the handler and therefore skip
-		//further processing in the caller we need to populate the OutputPage
-		//with some information that might be needed by others (e.g.
-		//"FlaggedRevsConnector")
+		// As we return false at the end of the handler and therefore skip
+		// further processing in the caller we need to populate the OutputPage
+		// with some information that might be needed by others (e.g.
+		// "FlaggedRevsConnector")
 		$output->setRevisionId( $oDiffRevision->getId() );
 		$output->setRevisionTimestamp( $oDiffRevision->getTimestamp() );
 		$output->setArticleFlag( true );
@@ -257,56 +277,65 @@ HEREDOC;
 	 * @return array
 	 */
 	private function processClassicDiff( $sClassicDiff ) {
-		$aResult= array(
+		$aResult = [
 			'headeritems'   => '',
 			'revisiontable' => '',
 			'difftable'     => '',
 			'afterdiff'     => ''
-		);
+		];
 
 		$oClassicDiffDOM = new DOMDocument();
-		libxml_use_internal_errors(true);
-		$oClassicDiffDOM->loadHTML('<?xml encoding="UTF-8"><html><body>'.$sClassicDiff.'</body></html>');
+		libxml_use_internal_errors( true );
+		$oClassicDiffDOM->loadHTML(
+			"<?xml encoding=\"UTF-8\"><html><body>$sClassicDiff</body></html>"
+		);
 		libxml_clear_errors();
-		$oBodyElement = $oClassicDiffDOM->documentElement->childNodes->item(0);
+		$oBodyElement = $oClassicDiffDOM->documentElement->childNodes->item( 0 );
 
-		$aFirstLevelNodes = array();
-		foreach( $oBodyElement->childNodes as $oChild ){
+		$aFirstLevelNodes = [];
+		foreach ( $oBodyElement->childNodes as $oChild ) {
 			$aFirstLevelNodes[] = $oChild;
 		}
 
-		foreach( $aFirstLevelNodes as $oNode ) {
-			if( $oNode instanceof DOMElement == false ) continue;
-			$aNodeClasses = explode( ' ', $oNode->getAttribute('class') );
-			if( $oNode->nodeName == 'table' && in_array('diff', $aNodeClasses) ) {
-				$aTableChildNodes = array();
-				foreach( $oNode->childNodes as $oChild ) {
+		foreach ( $aFirstLevelNodes as $oNode ) {
+			if ( $oNode instanceof DOMElement == false ) { continue;
+			}
+			$aNodeClasses = explode( ' ', $oNode->getAttribute( 'class' ) );
+			if ( $oNode->nodeName == 'table' && in_array( 'diff', $aNodeClasses ) ) {
+				$aTableChildNodes = [];
+				foreach ( $oNode->childNodes as $oChild ) {
 					$aTableChildNodes[] = $oChild;
 				}
 
-				foreach( $aTableChildNodes as $oChildNode ) {
-					if($oChildNode->nodeName == 'tr'){
-						$aResult['revisiontable'] = '<table class="revisiontable">'.$oClassicDiffDOM->saveHTML($oChildNode).'</table>';
+				foreach ( $aTableChildNodes as $oChildNode ) {
+					if ( $oChildNode->nodeName == 'tr' ) {
+						$aResult['revisiontable'] = Html::openElement( 'table', [
+							'class' => 'revisiontable'
+						] );
+						$aResult['revisiontable'] .= $oClassicDiffDOM->saveHTML(
+							$oChildNode
+						);
+						$aResult['revisiontable'] .= Html::closeElement( 'table' );
 						$oChildNode->parentNode->removeChild( $oChildNode );
 						break;
 					}
 				}
-				$aResult['difftable'] = $oClassicDiffDOM->saveHTML($oNode);
+				$aResult['difftable'] = $oClassicDiffDOM->saveHTML( $oNode );
 				$oNode->parentNode->removeChild( $oNode );
 				break;
 			}
 
-			$aResult['headeritems'] .= $oClassicDiffDOM->saveHTML($oNode);
+			$aResult['headeritems'] .= $oClassicDiffDOM->saveHTML( $oNode );
 			$oNode->parentNode->removeChild( $oNode );
 		}
 
-		//We remove the "current version" heading because we would have to
-		//render the content by ourselfs. The MW DifferenceEngine doesn't do it for us.
-		$oDOMXPath = new DOMXPath($oClassicDiffDOM);
+		// We remove the "current version" heading because we would have to
+		// render the content by ourselfs. The MW DifferenceEngine doesn't do it for us.
+		$oDOMXPath = new DOMXPath( $oClassicDiffDOM );
 		$oCurrentVersionHeadings = $oDOMXPath->query( "//h2[@class='diff-currentversion-title']" );
-		if( $oCurrentVersionHeadings->item(0) != null ){
-			$oCurrentVersionHeadings->item(0)->parentNode->removeChild(
-					$oCurrentVersionHeadings->item(0)
+		if ( $oCurrentVersionHeadings->item( 0 ) != null ) {
+			$oCurrentVersionHeadings->item( 0 )->parentNode->removeChild(
+					$oCurrentVersionHeadings->item( 0 )
 			);
 		}
 
