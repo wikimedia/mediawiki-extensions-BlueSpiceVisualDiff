@@ -4,5 +4,7 @@
 			"Robby"
 		]
 	},
-	"bs-visualdiff-classicdiffengine-tab": "Klassesch"
+	"bs-visualdiff-classicdiffengine-tab": "Klassesch",
+	"bs-visualdiff-removed-text": "Dëst Element gouf ewechgeholl",
+	"bs-visualdiff-changed-text": "Dëst Element gouf geännert"
 }
