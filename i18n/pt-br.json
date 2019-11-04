@@ -4,7 +4,14 @@
 			"Eduardo Addad de Oliveira"
 		]
 	},
+	"bs-visualdiff-extension-description": "Exibição formatada de diferenças entre duas revisões.",
+	"bs-visualdiff-return-to-history": "Retornar à página do histórico",
+	"bs-visualdiff-error-oldid-invalid": "A revisão base fornecida é inválida.",
+	"bs-visualdiff-error-diff-invalid": "A revisão diferencial fornecida é inválida.",
 	"bs-visualdiff-classicdiffengine-tab": "Clássico",
 	"bs-visualdiff-htmldiffengine-tab": "Visual",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiTexto"
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiTexto",
+	"bs-visualdiff-removed-text": "Este elemento foi removido",
+	"bs-visualdiff-added-text": "Este elemento foi adicionado",
+	"bs-visualdiff-changed-text": "Este elemento foi alterado"
 }

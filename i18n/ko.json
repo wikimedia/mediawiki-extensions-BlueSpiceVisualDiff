@@ -1,0 +1,9 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"bs-visualdiff-htmldiffengine-tab": "시각",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "위키텍스트"
+}

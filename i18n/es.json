@@ -1,11 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
-			"Canaan9801"
+			"Canaan9801",
+			"Fitoschido"
 		]
 	},
 	"bs-visualdiff-extension-description": "Visualización formateada de diferencias entre dos revisiones.",
-	"bs-visualdiff-return-to-history": "Regresar a la página de historia.",
+	"bs-visualdiff-return-to-history": "Volver a la página del historial",
 	"bs-visualdiff-error-oldid-invalid": "La revisión de base provista no es válida.",
 	"bs-visualdiff-error-diff-invalid": "La revisión diff provista no es válida.",
 	"bs-visualdiff-classicdiffengine-tab": "Clásico",
