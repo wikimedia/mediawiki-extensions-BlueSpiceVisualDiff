@@ -8,6 +8,8 @@
 	"bs-visualdiff-return-to-history": "Retornar à página do histórico",
 	"bs-visualdiff-error-oldid-invalid": "A revisão base fornecida é inválida.",
 	"bs-visualdiff-error-diff-invalid": "A revisão diferencial fornecida é inválida.",
+	"bs-visualdiff-popup-next": "Próxima &nbsp;mudança",
+	"bs-visualdiff-popup-prev": "Mudança&nbsp;anterior",
 	"bs-visualdiff-classicdiffengine-tab": "Clássico",
 	"bs-visualdiff-htmldiffengine-tab": "Visual",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiTexto",
