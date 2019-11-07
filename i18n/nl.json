@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Elroy"
+		]
+	},
+	"bs-visualdiff-error-oldid-invalid": "De opgegeven basiswijziging is ongeldig.",
+	"bs-visualdiff-error-diff-invalid": "De opgegeven verschilwijziging is ongeldig.",
+	"bs-visualdiff-popup-next": "Volgende&nbsp;wijziging",
+	"bs-visualdiff-popup-prev": "Vorige&nbsp;wijziging",
+	"bs-visualdiff-classicdiffengine-tab": "Klassiek",
+	"bs-visualdiff-removed-text": "Dit element is verwijderd",
+	"bs-visualdiff-added-text": "Dit element is toegevoegd"
+}

@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Vlad5250"
+		]
+	},
+	"bs-visualdiff-return-to-history": "Назад на страницата со историја",
+	"bs-visualdiff-popup-next": "Следна&nbsp;промена",
+	"bs-visualdiff-popup-prev": "Претходна&nbsp;промена",
+	"bs-visualdiff-classicdiffengine-tab": "Класично"
+}

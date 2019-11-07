@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Joetaras"
+		]
+	},
+	"bs-visualdiff-extension-description": "'Ndrucamende formattate de le differenza 'mbrà doje revisiune.",
+	"bs-visualdiff-return-to-history": "Tuèrne a 'a pàgne d'u cunde",
+	"bs-visualdiff-error-oldid-invalid": "'A revisione base date non g'è valide.",
+	"bs-visualdiff-error-diff-invalid": "'A differenze de revisione date non g'è valide.",
+	"bs-visualdiff-popup-next": "Prosseme&nbsp;cangiamende",
+	"bs-visualdiff-popup-prev": "Cangiamende&nbsp;precedende",
+	"bs-visualdiff-classicdiffengine-tab": "Classeche",
+	"bs-visualdiff-htmldiffengine-tab": "Visuale",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Uicchiteste",
+	"bs-visualdiff-removed-text": "Stu elemende ha state luate",
+	"bs-visualdiff-added-text": "Stu elemende ha state aggiunde",
+	"bs-visualdiff-changed-text": "Stu elemende ha state cangiate"
+}

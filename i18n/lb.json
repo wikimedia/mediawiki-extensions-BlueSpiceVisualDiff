@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Robby"
+		]
+	},
+	"bs-visualdiff-popup-next": "Nächst&nbsp;Ännerung",
+	"bs-visualdiff-classicdiffengine-tab": "Klassesch",
+	"bs-visualdiff-htmldiffengine-tab": "Visuell",
+	"bs-visualdiff-removed-text": "Dëst Element gouf ewechgeholl",
+	"bs-visualdiff-added-text": "Dëst Element gouf derbäigesat",
+	"bs-visualdiff-changed-text": "Dëst Element gouf geännert"
+}

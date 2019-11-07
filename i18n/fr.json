@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Verdy p"
+		]
+	},
+	"bs-visualdiff-extension-description": "Affichage formaté des différences entre deux versions.",
+	"bs-visualdiff-return-to-history": "Retour à la page d’historique",
+	"bs-visualdiff-error-oldid-invalid": "La version de base fournie n’est pas valide.",
+	"bs-visualdiff-error-diff-invalid": "La version de différence fournie n’est pas valide.",
+	"bs-visualdiff-popup-next": "Changement&nbsp;suivant",
+	"bs-visualdiff-popup-prev": "Changement&nbsp;précédent",
+	"bs-visualdiff-classicdiffengine-tab": "Classique",
+	"bs-visualdiff-htmldiffengine-tab": "Visuel",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitexte",
+	"bs-visualdiff-removed-text": "Cet élément a été supprimé",
+	"bs-visualdiff-added-text": "Cet élément a été ajouté",
+	"bs-visualdiff-changed-text": "Cet élément a été modifié"
+}
