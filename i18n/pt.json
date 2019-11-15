@@ -1,0 +1,17 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mansil alfalb"
+		]
+	},
+	"bs-visualdiff-return-to-history": "Voltar para página do histórico",
+	"bs-visualdiff-error-oldid-invalid": "A revisão de base fornecida é inválida.",
+	"bs-visualdiff-popup-next": "Alteração seguinte",
+	"bs-visualdiff-popup-prev": "Alteração anterior",
+	"bs-visualdiff-classicdiffengine-tab": "Clássico",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiTexto",
+	"bs-visualdiff-removed-text": "Este elemento foi removido",
+	"bs-visualdiff-added-text": "Este elemento foi adicionado",
+	"bs-visualdiff-changed-text": "Este elemento foi alterado"
+}
