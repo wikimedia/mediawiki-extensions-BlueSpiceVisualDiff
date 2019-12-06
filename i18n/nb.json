@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"bs-visualdiff-extension-description": "Formatert visning av forskjeller mellom to revisjoner.",
+	"bs-visualdiff-return-to-history": "Returner til historikksiden",
+	"bs-visualdiff-error-oldid-invalid": "Den gitte grunnrevisjonen er ugyldig.",
+	"bs-visualdiff-error-diff-invalid": "Den gitte diffrevisjonen er ugyldig.",
+	"bs-visualdiff-popup-next": "Neste&nbsp;endring",
+	"bs-visualdiff-popup-prev": "Forrige&nbsp;endring",
+	"bs-visualdiff-classicdiffengine-tab": "Klassisk",
+	"bs-visualdiff-htmldiffengine-tab": "Visuell",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitekst",
+	"bs-visualdiff-removed-text": "Dette elementet har blitt fjernet",
+	"bs-visualdiff-added-text": "Dette elementet har blitt lagt til",
+	"bs-visualdiff-changed-text": "Dette elementet har blitt endret"
+}

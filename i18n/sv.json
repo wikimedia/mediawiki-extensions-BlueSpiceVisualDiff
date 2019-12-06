@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"bs-visualdiff-popup-next": "Nästa&nbsp;ändring",
+	"bs-visualdiff-htmldiffengine-tab": "Visuell",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitext"
+}

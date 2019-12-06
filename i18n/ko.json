@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ykhwong"
+		]
+	},
+	"bs-visualdiff-return-to-history": "역사 문서로 돌아가기",
+	"bs-visualdiff-htmldiffengine-tab": "시각",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "위키텍스트",
+	"bs-visualdiff-removed-text": "이 요소는 제거되었습니다",
+	"bs-visualdiff-added-text": "이 요소가 추가되었습니다",
+	"bs-visualdiff-changed-text": "이 요소는 변경되었습니다"
+}
