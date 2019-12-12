@@ -1,11 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"Vlad5250"
+			"Vlad5250",
+			"Bjankuloski06"
 		]
 	},
+	"bs-visualdiff-extension-description": "Форматиран приказ на разлики помеѓу две преработки.",
 	"bs-visualdiff-return-to-history": "Назад на страницата со историја",
+	"bs-visualdiff-error-oldid-invalid": "Укажаната појдовна преработка е неважечка.",
+	"bs-visualdiff-error-diff-invalid": "Укажаната различна преработка е неважечка.",
 	"bs-visualdiff-popup-next": "Следна&nbsp;промена",
 	"bs-visualdiff-popup-prev": "Претходна&nbsp;промена",
-	"bs-visualdiff-classicdiffengine-tab": "Класично"
+	"bs-visualdiff-classicdiffengine-tab": "Класично",
+	"bs-visualdiff-htmldiffengine-tab": "Нагледно",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Викитекст",
+	"bs-visualdiff-removed-text": "Овој елемент е отстранет",
+	"bs-visualdiff-added-text": "Овој елемент е додаден",
+	"bs-visualdiff-changed-text": "Овој елемент е изменет"
 }
