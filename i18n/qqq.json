@@ -1,10 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Patric Wirth"
+			"Patric Wirth",
+			"Umherirrender"
 		]
 	},
-	"bs-visualdiff-extension-description": "{{desc|name=BlueSpiceSocial}}",
+	"bs-visualdiff-extension-description": "{{desc|name=BlueSpiceVisualDiff}}",
 	"bs-visualdiff-return-to-history": "Link label that returns to history page",
 	"bs-visualdiff-error-oldid-invalid": "Error message that states, that the provided base revision is invalid.",
 	"bs-visualdiff-error-diff-invalid": "Error message that states, that the provided diff revision is invalid.",
