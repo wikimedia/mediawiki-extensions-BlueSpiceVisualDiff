@@ -117,13 +117,12 @@ class HTMLDiffEngine {
 	 * @return string The revisions HTML representation
 	 */
 	protected function getRevisionHTML( $oRevision, $sTmpPath ) {
-		// phpcs:ignore MediaWiki.Usage.DeprecatedGlobalVariables.Deprecated$wgParser
-		global $wgUser, $wgParser;
+		global $wgUser;
 		// TODO RBV (19.06.12 15:05): Use API to render?
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
 		// TODO RBV (21.06.12 12:08): To the contructor?
 		$oParserOptions = ParserOptions::newFromUser( $wgUser );
-		$oParserOutput = $wgParser->parse(
+		$oParserOutput = MediaWikiServices::getParser()->parse(
 			ContentHandler::getContentText( $oRevision->getContent() ),
 			$oRevision->getTitle(),
 			$oParserOptions
