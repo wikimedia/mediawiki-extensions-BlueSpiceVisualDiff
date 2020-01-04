@@ -1,6 +1,7 @@
 <?php
 
 use Wikimedia\AtEase\AtEase;
+use MediaWiki\MediaWikiServices;
 
 class HTMLDiffEngine {
 
@@ -122,7 +123,7 @@ class HTMLDiffEngine {
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
 		// TODO RBV (21.06.12 12:08): To the contructor?
 		$oParserOptions = ParserOptions::newFromUser( $wgUser );
-		$oParserOutput = MediaWikiServices::getParser()->parse(
+		$oParserOutput = MediaWikiServices::getInstance()->getParser()->parse(
 			ContentHandler::getContentText( $oRevision->getContent() ),
 			$oRevision->getTitle(),
 			$oParserOptions
