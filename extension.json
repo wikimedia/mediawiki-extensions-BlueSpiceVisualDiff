@@ -60,7 +60,7 @@
 			],
 			"dependencies": [
 				"ext.bluespice.extjs",
-				"jquery.ui.tabs"
+				"jquery.ui"
 			]
 		}
 	},
