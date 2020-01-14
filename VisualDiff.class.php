@@ -105,7 +105,7 @@ HEREDOC;
 	 * @return array Map of variable names to string CSS values.
 	 */
 	public static function getLessVars( Config $config = null ) {
-		if ( is_null( $config ) ) {
+		if ( $config === null ) {
 			$config = $oConfig = ConfigFactory::getDefaultInstance()
 				->makeConfig( 'main' );
 		}

@@ -1,7 +1,7 @@
 <?php
 
-use Wikimedia\AtEase\AtEase;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\AtEase\AtEase;
 
 class HTMLDiffEngine {
 
