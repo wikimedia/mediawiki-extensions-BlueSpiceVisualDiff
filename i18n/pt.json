@@ -1,0 +1,20 @@
+{
+	"@metadata": {
+		"authors": [
+			"Mansil alfalb",
+			"Hamilton Abreu"
+		]
+	},
+	"bs-visualdiff-extension-description": "Apresentação formatada de diferenças entre duas revisões.",
+	"bs-visualdiff-return-to-history": "Voltar à página do histórico",
+	"bs-visualdiff-error-oldid-invalid": "A revisão de base fornecida é inválida.",
+	"bs-visualdiff-error-diff-invalid": "A revisão com diferenças fornecida é inválida.",
+	"bs-visualdiff-popup-next": "Alteração&nbsp;seguinte",
+	"bs-visualdiff-popup-prev": "Alteração&nbsp;anterior",
+	"bs-visualdiff-classicdiffengine-tab": "Clássico",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Texto wiki",
+	"bs-visualdiff-removed-text": "Este elemento foi removido",
+	"bs-visualdiff-added-text": "Este elemento foi adicionado",
+	"bs-visualdiff-changed-text": "Este elemento foi alterado"
+}

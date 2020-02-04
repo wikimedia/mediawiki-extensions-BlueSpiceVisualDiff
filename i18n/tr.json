@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"BaRaN6161 TURK"
+		]
+	},
+	"bs-visualdiff-extension-description": "İki revizyon arasındaki farkların formatlanmış gösterimi.",
+	"bs-visualdiff-return-to-history": "Geçmiş sayfasına dön",
+	"bs-visualdiff-error-oldid-invalid": "Sağlanan temel revizyon geçersiz.",
+	"bs-visualdiff-error-diff-invalid": "Sağlanan fark düzeltmesi geçersiz.",
+	"bs-visualdiff-popup-next": "Sonraki&nbsp;değişik",
+	"bs-visualdiff-popup-prev": "Önceki&nbsp;değişik",
+	"bs-visualdiff-classicdiffengine-tab": "Klasik",
+	"bs-visualdiff-htmldiffengine-tab": "Görsel",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiMetin",
+	"bs-visualdiff-removed-text": "Bu öğe kaldırıldı",
+	"bs-visualdiff-added-text": "Bu öğe eklendi",
+	"bs-visualdiff-changed-text": "Bu öğe değiştirildi"
+}

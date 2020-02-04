@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"ToJack"
+		]
+	},
+	"bs-visualdiff-return-to-history": "Ббозгашт ба саҳифаи таърих",
+	"bs-visualdiff-classicdiffengine-tab": "Классик",
+	"bs-visualdiff-htmldiffengine-tab": "Визуалӣ/Дидорӣ",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Вики-матн",
+	"bs-visualdiff-changed-text": "Ин элемент тағйир дода шуд"
+}
