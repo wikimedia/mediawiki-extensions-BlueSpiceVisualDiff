@@ -14,5 +14,7 @@
 	"bs-visualdiff-unifiedtextdiffengine-tab": "Texto wiki",
 	"bs-visualdiff-removed-text": "Este elemento foi removido",
 	"bs-visualdiff-added-text": "Este elemento foi adicionado",
-	"bs-visualdiff-changed-text": "Este elemento foi alterado"
+	"bs-visualdiff-changed-text": "Este elemento foi alterado",
+	"bs-visualdiff-extension-description": "Apresentação formatada de diferenças entre duas revisões.",
+	"bs-visualdiff-error-diff-invalid": "A revisão com diferenças fornecida é inválida."
 }
