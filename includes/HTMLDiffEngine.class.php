@@ -33,8 +33,9 @@ class HTMLDiffEngine {
 		}
 
 		// Get the HTML strings
-		$sOldHTML  = $this->getRevisionHTML( $oOldRevision, $sTmpPath );
-		$sDiffHTML = $this->getRevisionHTML( $oDiffRevision, $sTmpPath );
+		$user = RequestContext::getMain()->getUser();
+		$sOldHTML  = $this->getRevisionHTML( $oOldRevision, $sTmpPath, $user );
+		$sDiffHTML = $this->getRevisionHTML( $oDiffRevision, $sTmpPath, $user );
 
 		$aParams = [
 			'type' => 'html',
@@ -115,14 +116,14 @@ class HTMLDiffEngine {
 	 * Renders the HTML of a Revision that should be compared
 	 * @param Revision $oRevision
 	 * @param string $sTmpPath
+	 * @param User $user
 	 * @return string The revisions HTML representation
 	 */
-	protected function getRevisionHTML( $oRevision, $sTmpPath ) {
-		global $wgUser;
+	protected function getRevisionHTML( $oRevision, $sTmpPath, User $user ) {
 		// TODO RBV (19.06.12 15:05): Use API to render?
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
 		// TODO RBV (21.06.12 12:08): To the contructor?
-		$oParserOptions = ParserOptions::newFromUser( $wgUser );
+		$oParserOptions = ParserOptions::newFromUser( $user );
 		$oParserOutput = MediaWikiServices::getInstance()->getParser()->parse(
 			ContentHandler::getContentText( $oRevision->getContent() ),
 			$oRevision->getTitle(),
