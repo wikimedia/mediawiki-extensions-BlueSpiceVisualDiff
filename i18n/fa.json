@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"FarsiNevis"
+		]
+	},
+	"bs-visualdiff-extension-description": "نمایش قالب‌بندی‌شدهٔ تفاوت‌های بین دو نسخه.",
+	"bs-visualdiff-return-to-history": "بازگشت به صفحهٔ تاریخچه",
+	"bs-visualdiff-htmldiffengine-tab": "دیداری",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "ویکی‌متن"
+}
