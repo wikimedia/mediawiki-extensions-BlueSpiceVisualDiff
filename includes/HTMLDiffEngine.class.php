@@ -41,7 +41,7 @@ class HTMLDiffEngine {
 			'type' => 'html',
 			'wikiId' => wfWikiID()
 		];
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {

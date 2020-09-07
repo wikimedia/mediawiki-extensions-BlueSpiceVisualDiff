@@ -1,4 +1,5 @@
 <?php
+use MediaWiki\MediaWikiServices;
 
 class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
@@ -40,7 +41,7 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 			'wikiId' => wfWikiID()
 		];
 
-		$config = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {
