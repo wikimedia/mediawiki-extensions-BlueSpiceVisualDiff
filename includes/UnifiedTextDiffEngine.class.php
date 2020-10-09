@@ -1,4 +1,6 @@
 <?php
+
+use BlueSpice\VisualDiff\Http\Curl11;
 use MediaWiki\MediaWikiServices;
 
 class UnifiedTextDiffEngine extends HTMLDiffEngine {
@@ -53,21 +55,31 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 			$aParams
 		);
 
-		$vHttpEngine = Http::$httpEngine;
-		Http::$httpEngine = 'curl';
-		$oRequest = MWHttpRequest::factory(
-			wfExpandUrl( $sUrl ),
-			[
-				'timeout' => 120,
-				'method' => 'POST',
-				'postData' => [
-					'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldWIKI ) : '@' . $sOldWIKI,
-					'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffWIKI ) : '@' . $sDiffWIKI
-				]
+		$options = [
+			'timeout' => 120,
+			'method' => 'POST',
+			'postData' => [
+				'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldWIKI ) : '@' . $sOldWIKI,
+				'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffWIKI ) : '@' . $sDiffWIKI
 			]
-		);
-		Http::$httpEngine = $vHttpEngine;
-
+		];
+		if ( $config->get( 'VisualDiffForceCurlHttp11' ) ) {
+			$oRequest = new Curl11(
+				wfExpandUrl( $sUrl ),
+				$options,
+				__METHOD__,
+				Profiler::instance()
+			);
+		} else {
+			$vHttpEngine = Http::$httpEngine;
+			Http::$httpEngine = 'curl';
+			$oRequest = MWHttpRequest::factory(
+				wfExpandUrl( $sUrl ),
+				$options,
+				__METHOD__
+			);
+			Http::$httpEngine = $vHttpEngine;
+		}
 		$oStatus = $oRequest->execute();
 
 		if ( !$oStatus->isOK() ) {
