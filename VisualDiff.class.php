@@ -29,6 +29,8 @@
  * @filesource
  */
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Base class for VisualDiff extension
  * @package BlueSpice_pro
@@ -153,17 +155,18 @@ HEREDOC;
 			$iDiff = $oCurrentTitle->getLatestRevID();
 		}
 
+		$revisionLookup = MediaWikiServices::getInstance()->getRevisionLookup();
 		// Fallback to latest revision. In some caeses only "diff" is set, but not "oldid".
 		if ( $iOldId === 0 ) {
-			$oOldRevision = Revision::newFromId( $iDiff );
+			$oOldRevision = $revisionLookup->getRevisionById( $iDiff );
 			// This prevents the code from breaking if there is only one
 			// revision yet --> We cannot diff
 			if ( $oOldRevision === null ) {
 				return true;
 			}
-			$oOldRevision = $oOldRevision->getPrevious();
+			$oOldRevision = $revisionLookup->getPreviousRevision( $oOldRevision );
 		} else {
-			$oOldRevision = Revision::newFromId( $iOldId );
+			$oOldRevision = $revisionLookup->getRevisionById( $iOldId );
 		}
 
 		$sClassicDiff = $output->getHTML();
@@ -178,7 +181,7 @@ HEREDOC;
 
 		// TODO: Why not $oCurrentTitle?
 		// So the base revision is okay? Let's build the page.
-		$oReturnToTitle = $oOldRevision->getTitle();
+		$oReturnToTitle = Title::newFromID( $oOldRevision->getPageId() );
 		$output->setSubtitle(
 			Linker::link(
 				$oReturnToTitle,
@@ -191,7 +194,7 @@ HEREDOC;
 		$output->addBacklinkSubtitle( $output->getTitle() );
 
 		// maybe null if !is_nummeric( $iDiff ) == false
-		$oDiffRevision = Revision::newFromId( $iDiff );
+		$oDiffRevision = $revisionLookup->getRevisionById( $iDiff );
 		// $oDiffRevision may be changed by some other Extension like
 		// FlaggedRevsConnector (i.e 'cur' means 'last stable' instead of 'last revision')
 		$visualDiff = $this;
@@ -204,13 +207,12 @@ HEREDOC;
 		] );
 		if ( $res ) {
 			if ( $iDiff == 'next' ) {
-				$oDiffRevision = $oOldRevision->getNext();
+				$oDiffRevision = $revisionLookup->getNextRevision( $oOldRevision );
 			} elseif ( $iDiff == 'prev' ) {
-				$oDiffRevision = $oOldRevision->getPrevious();
+				$oDiffRevision = $revisionLookup->getPreviousRevision( $oOldRevision );
 			} elseif ( $iDiff == 'cur' ) {
-				$oDiffRevision = Revision::newFromId(
-					$oOldRevision->getTitle()->getLatestRevID()
-				);
+				$title = Title::newFromID( $oOldRevision->getPageId() );
+				$oDiffRevision = $revisionLookup->getRevisionById( $title->getLatestRevID() );
 			}
 		}
 
