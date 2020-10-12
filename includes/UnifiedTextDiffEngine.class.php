@@ -2,13 +2,14 @@
 
 use BlueSpice\VisualDiff\Http\Curl11;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 
 class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
 	/**
 	 *
-	 * @param Revision $oOldRevision
-	 * @param Revision $oDiffRevision
+	 * @param RevisionRecord $oOldRevision
+	 * @param RevisionRecord $oDiffRevision
 	 * @return string
 	 */
 	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
@@ -34,9 +35,15 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
 		// Get the WIKI content
 		$sOldWIKI = "$sTmpPath/{$oOldRevision->getId()}.wiki";
-		file_put_contents( $sOldWIKI, ContentHandler::getContentText( $oOldRevision->getContent() ) );
+		file_put_contents(
+			$sOldWIKI,
+			ContentHandler::getContentText( $oOldRevision->getContent( 'main' ) )
+		);
 		$sDiffWIKI = "$sTmpPath/{$oDiffRevision->getId()}.wiki";
-		file_put_contents( $sDiffWIKI, ContentHandler::getContentText( $oDiffRevision->getContent() ) );
+		file_put_contents(
+			$sDiffWIKI,
+			ContentHandler::getContentText( $oDiffRevision->getContent( 'main' ) )
+		);
 
 		$aParams = [
 			'type' => 'tag',
