@@ -39,6 +39,9 @@
 		"HTMLDiffEngine": "includes/HTMLDiffEngine.class.php",
 		"UnifiedTextDiffEngine": "includes/UnifiedTextDiffEngine.class.php"
 	},
+	"AutoloadNamespaces": {
+		"BlueSpice\\VisualDiff\\": "src/"
+	},
 	"ResourceModules": {
 		"ext.bluespice.visualDiff.styles": {
 			"styles": [
@@ -72,7 +75,11 @@
 	"config": {
 		"VisualDiffHtmlDiffEngineUrl": {
 			"value": "http://localhost:8080/BShtmlDiff"
+		},
+		"VisualDiffForceCurlHttp11": {
+			"value": false
 		}
 	},
+	"load_composer_autoloader" : true,
 	"manifest_version": 2
 }
