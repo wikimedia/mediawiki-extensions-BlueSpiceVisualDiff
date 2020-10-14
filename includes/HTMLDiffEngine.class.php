@@ -2,14 +2,15 @@
 
 use BlueSpice\VisualDiff\Http\Curl11;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\AtEase\AtEase;
 
 class HTMLDiffEngine {
 
 	/**
 	 *
-	 * @param Revision $oOldRevision
-	 * @param Revision $oDiffRevision
+	 * @param RevisionRecord $oOldRevision
+	 * @param RevisionRecord $oDiffRevision
 	 * @return string The HTML for display in diff
 	 */
 	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
@@ -125,7 +126,7 @@ class HTMLDiffEngine {
 
 	/**
 	 * Renders the HTML of a Revision that should be compared
-	 * @param Revision $oRevision
+	 * @param RevisionRecord $oRevision
 	 * @param string $sTmpPath
 	 * @param User $user
 	 * @return string The revisions HTML representation
@@ -136,8 +137,8 @@ class HTMLDiffEngine {
 		// TODO RBV (21.06.12 12:08): To the contructor?
 		$oParserOptions = ParserOptions::newFromUser( $user );
 		$oParserOutput = MediaWikiServices::getInstance()->getParser()->parse(
-			ContentHandler::getContentText( $oRevision->getContent() ),
-			$oRevision->getTitle(),
+			ContentHandler::getContentText( $oRevision->getContent( 'main' ) ),
+			Title::newFromID( $oRevision->getPageId() ),
 			$oParserOptions
 		);
 
