@@ -198,13 +198,16 @@ HEREDOC;
 		// $oDiffRevision may be changed by some other Extension like
 		// FlaggedRevsConnector (i.e 'cur' means 'last stable' instead of 'last revision')
 		$visualDiff = $this;
-		$res = Hooks::run( 'VisualDiffRetrieveDiffRevision', [
-			&$visualDiff,
-			&$oOldRevision,
-			&$oDiffRevision,
-			$iOldId,
-			$iDiff
-		] );
+		$res = MediaWikiServices::getInstance()->getHookContainer()->run(
+			'VisualDiffRetrieveDiffRevision',
+			[
+				&$visualDiff,
+				&$oOldRevision,
+				&$oDiffRevision,
+				$iOldId,
+				$iDiff
+			]
+		);
 		if ( $res ) {
 			if ( $iDiff == 'next' ) {
 				$oDiffRevision = $revisionLookup->getNextRevision( $oOldRevision );
