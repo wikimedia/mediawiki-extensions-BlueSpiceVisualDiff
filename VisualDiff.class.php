@@ -98,21 +98,6 @@ HEREDOC;
 	}
 
 	/**
-	 * Get global LESS variables.
-	 *
-	 * @param Config|null $config
-	 * @since 1.22
-	 * @return array Map of variable names to string CSS values.
-	 */
-	public static function getLessVars( Config $config = null ) {
-		if ( is_null( $config ) ) {
-			$config = $oConfig = ConfigFactory::getDefaultInstance()
-				->makeConfig( 'main' );
-		}
-		return ResourceLoader::getLessVars( $config );
-	}
-
-	/**
 	 * Make sure to hide content of not selected tabs
 	 * @param BsExportModulePDF $oModule
 	 * @param DOMDocument $oDOM
