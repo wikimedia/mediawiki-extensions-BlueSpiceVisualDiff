@@ -32,6 +32,7 @@
 			}
 		}
 	},
+	"callback": "\\VisualDiff::onRegistration",
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
