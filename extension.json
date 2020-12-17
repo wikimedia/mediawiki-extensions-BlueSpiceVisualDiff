@@ -24,8 +24,17 @@
 					"package": "BlueSpice Pro"
 				}
 			}
+		},
+		"BlueSpiceVisualDiff": {
+			"DiffEngineRegistry": {
+				"HTMLDiffEngine": "\\HTMLDiffEngine::factory",
+				"UnifiedTextDiffEngine": "\\UnifiedTextDiffEngine::factory"
+			}
 		}
 	},
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
 	"DefaultUserOptions": {
 		"diffonly": 0
 	},

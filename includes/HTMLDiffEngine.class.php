@@ -1,11 +1,20 @@
 <?php
 
+use BlueSpice\VisualDiff\DiffEngine;
 use BlueSpice\VisualDiff\Http\Curl11;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\AtEase\AtEase;
 
-class HTMLDiffEngine {
+class HTMLDiffEngine extends DiffEngine {
+
+	/**
+	 *
+	 * @return string
+	 */
+	protected function getLabelMsgKey() {
+		return 'bs-visualdiff-htmldiffengine-tab';
+	}
 
 	/**
 	 *
