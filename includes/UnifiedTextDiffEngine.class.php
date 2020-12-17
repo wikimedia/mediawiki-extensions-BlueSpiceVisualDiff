@@ -8,6 +8,14 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
 	/**
 	 *
+	 * @return string
+	 */
+	protected function getLabelMsgKey() {
+		return 'bs-visualdiff-unifiedtextdiffengine-tab';
+	}
+
+	/**
+	 *
 	 * @param RevisionRecord $oOldRevision
 	 * @param RevisionRecord $oDiffRevision
 	 * @return string

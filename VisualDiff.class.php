@@ -38,7 +38,6 @@ use MediaWiki\MediaWikiServices;
  */
 class VisualDiff extends BsExtensionMW {
 
-	protected $aEngines = [ 'HTMLDiffEngine', 'UnifiedTextDiffEngine' ];
 	public static $sVisualDiffFolderName = 'VisualDiff';
 
 	/**
@@ -218,12 +217,16 @@ HEREDOC;
 		$aDiffs   = [];
 		$aTabList[] = '<ul id="difftabslist" class="ui-tabs-nav">';
 
-		foreach ( $this->aEngines as $sEngineClass ) {
-			$oEngine = new $sEngineClass();
+		$factory = MediaWikiServices::getInstance()->getService(
+			'BSVisualDiffDiffEngineFactory'
+		);
+		foreach ( $factory->getDiffEngines() as $oEngine ) {
+			// hacky, backwards compatible, so related JS and CSS still works
+			$sEngineClass = get_class( $oEngine );
 			$aTabList[] =
 			'<li class="ui-state-default ui-corner-top"><a href="#' . $sEngineClass . '">'
 				// bs-visualdiff-htmldiffengine-tab, bs-visualdiff-unifiedtextdiffengine-tab
-				. wfMessage( 'bs-visualdiff-' . strtolower( $sEngineClass ) . '-tab' )->escaped()
+				. $oEngine->getLabel()->escaped()
 			. '</a></li>';
 			$aDiffs[] = '<div id="' . $sEngineClass . '" class="diffcontainer">';
 			// $aDiffs[] = $sDiffHead;
