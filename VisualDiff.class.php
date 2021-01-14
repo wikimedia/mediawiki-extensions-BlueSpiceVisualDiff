@@ -42,11 +42,6 @@ class VisualDiff extends BsExtensionMW {
 	 * Initialization of VisualDiff extension
 	 */
 	public function  initExt() {
-		// Hooks
-		$this->setHook(
-			'BSUEModulePDFBeforeAddingStyleBlocks',
-			'onBSUEModulePDFBeforeAddingStyleBlocks'
-		);
 		$this->setHook(
 			'BSUEModulePDFBeforeCreatePDF',
 			'onBSUEModulePDFBeforeCreatePDF'
@@ -64,40 +59,6 @@ class VisualDiff extends BsExtensionMW {
 					. "AddTabbedDiffEngines::callback"
 			);
 		};
-	}
-
-	/**
-	 * Embeds CSS into pdf export
-	 * @param array &$aTemplate
-	 * @param array &$aStyleBlocks
-	 * @return bool Always true to keep hook running
-	 */
-	public function onBSUEModulePDFBeforeAddingStyleBlocks( &$aTemplate, &$aStyleBlocks ) {
-		// Welcome to ResourceLoader changes -.-
-		$sFile = __DIR__ . '/resources/bluespice.visualDiff.less';
-
-		$oConfig = ConfigFactory::getDefaultInstance()->makeConfig( 'main' );
-		$oCompiler = RequestContext::getMain()
-			->getOutput()
-			->getResourceLoader()
-			->getLessCompiler();
-
-		$aStyleBlocks['VisualDiff'] = $oCompiler->parse(
-				file_get_Contents( $sFile ),
-				$sFile
-		)->getCss();
-
-		$aStyleBlocks[ 'VisualDiff' ] .=
-<<<HEREDOC
-ul#difftabslist, #bs-vdiff-popup-prev, #bs-vdiff-popup-next {
-	display: none;
-}
-.UnifiedTextDiffEngine, .UnifiedTextDiffEngine pre {
-	white-space: pre-wrap;
-}
-HEREDOC;
-
-		return true;
 	}
 
 	/**
