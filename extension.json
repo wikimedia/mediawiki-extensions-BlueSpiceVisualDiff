@@ -90,6 +90,9 @@
 			"value": false
 		}
 	},
+	"Hooks": {
+		"BSUEModulePDFBeforeAddingStyleBlocks": "\\BlueSpice\\VisualDiff\\Hook\\BSUEModulePDFBeforeAddingStyleBlocks\\AddVisualDiffStyles::callback"
+	},
 	"load_composer_autoloader" : true,
 	"manifest_version": 2
 }
