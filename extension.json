@@ -91,7 +91,8 @@
 		}
 	},
 	"Hooks": {
-		"BSUEModulePDFBeforeAddingStyleBlocks": "\\BlueSpice\\VisualDiff\\Hook\\BSUEModulePDFBeforeAddingStyleBlocks\\AddVisualDiffStyles::callback"
+		"BSUEModulePDFBeforeAddingStyleBlocks": "\\BlueSpice\\VisualDiff\\Hook\\BSUEModulePDFBeforeAddingStyleBlocks\\AddVisualDiffStyles::callback",
+		"BSUEModulePDFBeforeCreatePDF": "\\BlueSpice\\VisualDiff\\Hook\\BSUEModulePDFBeforeCreatePDF\\HideUnselectedDiffs::callback"
 	},
 	"load_composer_autoloader" : true,
 	"manifest_version": 2

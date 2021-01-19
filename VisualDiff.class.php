@@ -38,16 +38,6 @@ class VisualDiff extends BsExtensionMW {
 
 	public static $sVisualDiffFolderName = 'VisualDiff';
 
-	/**
-	 * Initialization of VisualDiff extension
-	 */
-	public function  initExt() {
-		$this->setHook(
-			'BSUEModulePDFBeforeCreatePDF',
-			'onBSUEModulePDFBeforeCreatePDF'
-		);
-	}
-
 	public static function onRegistration() {
 		$GLOBALS['wgExtensionFunctions'][] = function () {
 			if ( !isset( $GLOBALS['wgHooks']['ArticleContentOnDiff'] ) ) {
@@ -59,26 +49,5 @@ class VisualDiff extends BsExtensionMW {
 					. "AddTabbedDiffEngines::callback"
 			);
 		};
-	}
-
-	/**
-	 * Make sure to hide content of not selected tabs
-	 * @param BsExportModulePDF $oModule
-	 * @param DOMDocument $oDOM
-	 * @param SpecialUniversalExport $oCaller
-	 * @return bool Always true to keep hook running
-	 */
-	public function onBSUEModulePDFBeforeCreatePDF( $oModule, $oDOM, $oCaller ) {
-		$oDOMXPath = new DOMXPath( $oDOM );
-		$oContainerElements = $oDOMXPath->query( "//*[contains(@class, 'diffcontainer')]" );
-		foreach ( $oContainerElements as $oContainerElement ) {
-			if ( $oContainerElement->getAttribute( 'id' ) == $oCaller->aParams['difftab'] ) {
-				// Keep user selected
-				continue;
-			}
-			// Remove all other
-			$oContainerElement->parentNode->removeChild( $oContainerElement );
-		}
-		return true;
 	}
 }
