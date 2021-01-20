@@ -25,8 +25,8 @@ class HTMLDiffEngine extends DiffEngine {
 	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
 		// Now let's get the diff
 		// ensure that the directory exits, otherwise create it
-		BsFileSystemHelper::ensureCacheDirectory( VisualDiff::$sVisualDiffFolderName );
-		$sTmpPath = BsFileSystemHelper::getCacheDirectory( VisualDiff::$sVisualDiffFolderName );
+		BsFileSystemHelper::ensureCacheDirectory( 'VisualDiff' );
+		$sTmpPath = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
 		// TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
 		$this->cleanTmpPath( $sTmpPath );
 
