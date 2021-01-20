@@ -19,7 +19,7 @@
 		"BlueSpiceFoundation": {
 			"Extensions": {
 				"BlueSpiceVisualDiff": {
-					"className": "VisualDiff",
+					"className": "\\BlueSpice\\VisualDiff\\Extension",
 					"extPath": "/BlueSpiceVisualDiff",
 					"package": "BlueSpice Pro"
 				}
@@ -32,7 +32,7 @@
 			}
 		}
 	},
-	"callback": "\\VisualDiff::onRegistration",
+	"callback": "\\BlueSpice\\VisualDiff\\Extension::onRegistration",
 	"ServiceWiringFiles": [
 		"includes/ServiceWiring.php"
 	],
@@ -45,7 +45,6 @@
 		]
 	},
 	"AutoloadClasses": {
-		"VisualDiff": "VisualDiff.class.php",
 		"HTMLDiffEngine": "includes/HTMLDiffEngine.class.php",
 		"UnifiedTextDiffEngine": "includes/UnifiedTextDiffEngine.class.php"
 	},
