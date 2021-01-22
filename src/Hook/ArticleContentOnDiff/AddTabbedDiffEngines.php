@@ -83,7 +83,8 @@ class AddTabbedDiffEngines extends ArticleContentOnDiff {
 			if ( $iDiff == 'next' ) {
 				$oDiffRevision = $revisionLookup->getNextRevision( $oOldRevision );
 			} elseif ( $iDiff == 'prev' ) {
-				$oDiffRevision = $revisionLookup->getPreviousRevision( $oOldRevision );
+				$oDiffRevision = $oOldRevision;
+				$oOldRevision = $revisionLookup->getPreviousRevision( $oDiffRevision );
 			} elseif ( $iDiff == 'cur' ) {
 				$title = Title::newFromID( $oOldRevision->getPageId() );
 				$oDiffRevision = $revisionLookup->getRevisionById( $title->getLatestRevID() );
