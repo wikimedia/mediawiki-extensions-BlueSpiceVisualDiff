@@ -191,7 +191,8 @@ HEREDOC;
 			if ( $iDiff == 'next' ) {
 				$oDiffRevision = $oOldRevision->getNext();
 			} elseif ( $iDiff == 'prev' ) {
-				$oDiffRevision = $oOldRevision->getPrevious();
+				$oDiffRevision = $oOldRevision;
+				$oOldRevision = $oDiffRevision->getPrevious();
 			} elseif ( $iDiff == 'cur' ) {
 				$oDiffRevision = Revision::newFromId(
 					$oOldRevision->getTitle()->getLatestRevID()
