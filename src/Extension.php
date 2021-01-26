@@ -29,14 +29,16 @@
  * @filesource
  */
 
+namespace BlueSpice\VisualDiff;
+
+use BlueSpice\Extension as ExtensionBase;
+
 /**
  * Base class for VisualDiff extension
  * @package BlueSpice_pro
  * @subpackage VisualDiff
  */
-class VisualDiff extends BsExtensionMW {
-
-	public static $sVisualDiffFolderName = 'VisualDiff';
+class Extension extends ExtensionBase {
 
 	public static function onRegistration() {
 		$GLOBALS['wgExtensionFunctions'][] = function () {

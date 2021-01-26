@@ -22,9 +22,7 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 	 */
 	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
 		// Now let's get the diff
-		$sTmpPath = BsFileSystemHelper::getCacheDirectory(
-			VisualDiff::$sVisualDiffFolderName
-		);
+		$sTmpPath = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
 		// TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
 		$this->cleanTmpPath( $sTmpPath );
 
