@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Piramidion"
+		]
+	},
+	"bs-visualdiff-extension-description": "Форматований показ різниці між двома версіями.",
+	"bs-visualdiff-return-to-history": "Повернутися на сторінку історії",
+	"bs-visualdiff-error-oldid-invalid": "Вказана базова версія є недійсною.",
+	"bs-visualdiff-error-diff-invalid": "Вказана нова версія є недійсною.",
+	"bs-visualdiff-popup-next": "Наступна&nbsp;зміна",
+	"bs-visualdiff-popup-prev": "Попередня&nbsp;зміна",
+	"bs-visualdiff-classicdiffengine-tab": "Класична",
+	"bs-visualdiff-htmldiffengine-tab": "Візуальна",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Вікірозмітка",
+	"bs-visualdiff-removed-text": "Цей елемент було вилучено",
+	"bs-visualdiff-added-text": "Цей елемент було додано",
+	"bs-visualdiff-changed-text": "Цей елемент було змінено"
+}

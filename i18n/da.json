@@ -4,5 +4,10 @@
 			"Saederup92"
 		]
 	},
-	"bs-visualdiff-classicdiffengine-tab": "Klassisk"
+	"bs-visualdiff-classicdiffengine-tab": "Klassisk",
+	"bs-visualdiff-htmldiffengine-tab": "Visuelt",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitekst",
+	"bs-visualdiff-removed-text": "Dette element er blevet fjernet",
+	"bs-visualdiff-added-text": "Dette element er blevet tilføjet",
+	"bs-visualdiff-changed-text": "Dette element er blevet ændret"
 }
