@@ -139,7 +139,8 @@ class HTMLDiffEngine {
 	 * @param type $sOutfile
 	 */
 	protected function cleanResultHTML( $sOutfile ) {
-		wfSuppressWarnings(); //In a diff html there may be duplicate IDs which results in warnings
+		// In a diff html there may be duplicate IDs which results in warnings
+		wfSuppressWarnings();
 		$oDOM = new DOMDocument();
 		$oDOM->loadHTMLFile( $sOutfile );
 		$oDOM->formatOutput = true;
