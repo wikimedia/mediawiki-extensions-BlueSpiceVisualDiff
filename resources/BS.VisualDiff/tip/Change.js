@@ -1,15 +1,16 @@
 Ext.define( 'BS.VisualDiff.tip.Change', {
-	extend: 'Ext.tip.QuickTip',
+	extend: 'Ext.tip.ToolTip',
 
-	anchor: 'left',
+	anchor: 'bottom',
 	autoHide: false,
+	showDelay: false,
+	hideDelay: 0,
 	minWidth: 300,
 
 	$target: null,
 
 	constructor: function( cfg ) {
 		this.target = cfg.$target[0];
-		this.title = '#' + cfg.$target.data('changeid');
 
 		var text = '';
 
