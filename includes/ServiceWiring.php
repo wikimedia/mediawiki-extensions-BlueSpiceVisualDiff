@@ -6,7 +6,7 @@ use MediaWiki\MediaWikiServices;
 
 return [
 
-	'BSVisualDiffDiffEngineFactory' => function ( MediaWikiServices $services ) {
+	'BSVisualDiffDiffEngineFactory' => static function ( MediaWikiServices $services ) {
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceVisualDiffDiffEngineRegistry'
 		);

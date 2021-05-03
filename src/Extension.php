@@ -41,7 +41,7 @@ use BlueSpice\Extension as ExtensionBase;
 class Extension extends ExtensionBase {
 
 	public static function onRegistration() {
-		$GLOBALS['wgExtensionFunctions'][] = function () {
+		$GLOBALS['wgExtensionFunctions'][] = static function () {
 			if ( !isset( $GLOBALS['wgHooks']['ArticleContentOnDiff'] ) ) {
 				$GLOBALS['wgHooks']['ArticleContentOnDiff'] = [];
 			}
