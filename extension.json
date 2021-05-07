@@ -60,8 +60,7 @@
 		},
 		"ext.bluespice.visualDiff": {
 			"scripts": [
-				"bluespice.visualDiff.tabs.js",
-				"bluespice.visualDiff.flyouts.js"
+				"bluespice.visualDiff.tabs.js"
 			],
 			"messages": [
 				"bs-visualdiff-removed-text",
