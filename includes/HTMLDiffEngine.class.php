@@ -185,6 +185,10 @@ class HTMLDiffEngine {
 				$oElement->removeAttribute( $sAttr );
 			}
 
+			if ( $oElement->parentNode->hasAttribute( 'href' ) ) {
+				$oElement->parentNode->removeAttribute( 'href' );
+			}
+
 			$oElement->removeAttribute( 'onclick' );
 			$oElement->removeAttribute( 'onload' );
 			$oElement->removeAttribute( 'onabort' );
