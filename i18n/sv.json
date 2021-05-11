@@ -1,10 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
 	"bs-visualdiff-popup-next": "Nästa&nbsp;ändring",
 	"bs-visualdiff-htmldiffengine-tab": "Visuell",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitext"
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitext",
+	"bs-visualdiff-extension-description": "Formaterad visning av skillnader mellan två sidversioner.",
+	"bs-visualdiff-return-to-history": "Tillbaka till historik",
+	"bs-visualdiff-error-oldid-invalid": "Den angivna grundversionen är ogiltig.",
+	"bs-visualdiff-error-diff-invalid": "Den angivna skillnadsversionen är ogiltig.",
+	"bs-visualdiff-popup-prev": "Tidigare&nbsp;ändring",
+	"bs-visualdiff-classicdiffengine-tab": "Klassisk",
+	"bs-visualdiff-removed-text": "Detta element har tagits bort",
+	"bs-visualdiff-added-text": "Detta element har lagts till",
+	"bs-visualdiff-changed-text": "Detta element har ändrats"
 }
