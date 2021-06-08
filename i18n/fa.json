@@ -1,11 +1,20 @@
 {
 	"@metadata": {
 		"authors": [
-			"FarsiNevis"
+			"FarsiNevis",
+			"Jeeputer"
 		]
 	},
 	"bs-visualdiff-extension-description": "نمایش قالب‌بندی‌شدهٔ تفاوت‌های بین دو نسخه.",
 	"bs-visualdiff-return-to-history": "بازگشت به صفحهٔ تاریخچه",
 	"bs-visualdiff-htmldiffengine-tab": "دیداری",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "ویکی‌متن"
+	"bs-visualdiff-unifiedtextdiffengine-tab": "ویکی‌متن",
+	"bs-visualdiff-error-oldid-invalid": "نسخهٔ مبنای ارائه‌شده نامعتبر است.",
+	"bs-visualdiff-error-diff-invalid": "نسخهٔ تفاوت ارائه‌شده نامعتبر است.",
+	"bs-visualdiff-popup-next": "تغییر&nbsp;بعدی",
+	"bs-visualdiff-popup-prev": "تغییر&nbsp;قبلی",
+	"bs-visualdiff-classicdiffengine-tab": "کلاسیک",
+	"bs-visualdiff-removed-text": "این عنصر حذف شده‌است",
+	"bs-visualdiff-added-text": "این عنصر افزوده شده‌است",
+	"bs-visualdiff-changed-text": "این عنصر تغییر یافته‌است"
 }
