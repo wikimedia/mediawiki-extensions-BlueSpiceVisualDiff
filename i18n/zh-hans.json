@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Lakejason0"
+			"Lakejason0",
+			"Tranve"
 		]
 	},
 	"bs-visualdiff-classicdiffengine-tab": "经典",
 	"bs-visualdiff-htmldiffengine-tab": "可视化",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Wiki文本",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
 	"bs-visualdiff-removed-text": "此元素已被移除",
 	"bs-visualdiff-added-text": "此元素已被添加",
 	"bs-visualdiff-changed-text": "此元素已被更改"
