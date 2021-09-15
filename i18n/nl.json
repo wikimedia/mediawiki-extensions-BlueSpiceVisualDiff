@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Elroy"
+			"Elroy",
+			"Romaine"
 		]
 	},
 	"bs-visualdiff-error-oldid-invalid": "De opgegeven basiswijziging is ongeldig.",
@@ -9,6 +10,9 @@
 	"bs-visualdiff-popup-next": "Volgende&nbsp;wijziging",
 	"bs-visualdiff-popup-prev": "Vorige&nbsp;wijziging",
 	"bs-visualdiff-classicdiffengine-tab": "Klassiek",
+	"bs-visualdiff-htmldiffengine-tab": "Visueel",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitekst",
 	"bs-visualdiff-removed-text": "Dit element is verwijderd",
-	"bs-visualdiff-added-text": "Dit element is toegevoegd"
+	"bs-visualdiff-added-text": "Dit element is toegevoegd",
+	"bs-visualdiff-changed-text": "Dit element is gewijzigd"
 }
