@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"McDutchie"
+		]
+	},
+	"bs-visualdiff-extension-description": "Visualisation formatate de differentias inter duo versiones.",
+	"bs-visualdiff-return-to-history": "Retornar al pagina de historia",
+	"bs-visualdiff-error-oldid-invalid": "Le version de base fornite non es valide.",
+	"bs-visualdiff-error-diff-invalid": "Le version de differentia fornite non es valide.",
+	"bs-visualdiff-popup-next": "Proxime&nbsp;cambiamento",
+	"bs-visualdiff-popup-prev": "Previe&nbsp;cambiamento",
+	"bs-visualdiff-classicdiffengine-tab": "Classic",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitexto",
+	"bs-visualdiff-removed-text": "Iste elemento ha essite removite",
+	"bs-visualdiff-added-text": "Iste elemento ha essite addite",
+	"bs-visualdiff-changed-text": "Iste elemento ha essite cambiate"
+}
