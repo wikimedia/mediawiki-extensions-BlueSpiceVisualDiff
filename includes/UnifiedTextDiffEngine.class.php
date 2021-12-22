@@ -53,7 +53,7 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
 		$aParams = [
 			'type' => 'tag',
-			'wikiId' => wfWikiID()
+			'wikiId' => WikiMap::getCurrentWikiId()
 		];
 
 		$config = MediaWikiServices::getInstance()->getConfigFactory()

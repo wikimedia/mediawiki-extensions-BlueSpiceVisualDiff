@@ -50,7 +50,7 @@ class HTMLDiffEngine extends DiffEngine {
 
 		$aParams = [
 			'type' => 'html',
-			'wikiId' => wfWikiID()
+			'wikiId' => WikiMap::getCurrentWikiId()
 		];
 		$config = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' );
