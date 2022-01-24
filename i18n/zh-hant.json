@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"Tranve"
 		]
 	},
 	"bs-visualdiff-extension-description": "格式化顯示兩個修訂之間不同的內容",
@@ -12,7 +13,7 @@
 	"bs-visualdiff-popup-prev": "前一個&nbsp;更改",
 	"bs-visualdiff-classicdiffengine-tab": "典型",
 	"bs-visualdiff-htmldiffengine-tab": "視覺化",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Wiki 語法",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
 	"bs-visualdiff-removed-text": "此元素已移除",
 	"bs-visualdiff-added-text": "此元素已添加",
 	"bs-visualdiff-changed-text": "此元素已更改"
