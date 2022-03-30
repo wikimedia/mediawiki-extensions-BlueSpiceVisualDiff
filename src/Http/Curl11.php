@@ -5,6 +5,7 @@ namespace BlueSpice\VisualDiff\Http;
 use CurlHttpRequest;
 use InvalidArgumentException;
 use Status;
+use Wikimedia\AtEase\AtEase;
 
 /**
  * Overwrite hardcoded usage of CURL_HTTP_VERSION_1_0
@@ -68,14 +69,14 @@ class Curl11 extends CurlHttpRequest {
 		}
 
 		if ( $this->followRedirects && $this->canFollowRedirects() ) {
-			Wikimedia\suppressWarnings();
+			AtEase::suppressWarnings();
 			if ( !curl_setopt( $curlHandle, CURLOPT_FOLLOWLOCATION, true ) ) {
 				$this->logger->debug( __METHOD__ . ": Couldn't set CURLOPT_FOLLOWLOCATION. " .
 					"Probably open_basedir is set." );
 				// Continue the processing. If it were in curl_setopt_array,
 				// processing would have halted on its entry
 			}
-			Wikimedia\restoreWarnings();
+			AtEase::restoreWarnings();
 		}
 
 		if ( $this->profiler ) {
