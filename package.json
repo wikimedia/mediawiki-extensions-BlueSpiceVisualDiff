@@ -1,4 +1,5 @@
 {
+	"name": "BlueSpiceVisualDiff",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
