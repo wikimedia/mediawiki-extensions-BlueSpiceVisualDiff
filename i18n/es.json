@@ -9,6 +9,8 @@
 	"bs-visualdiff-return-to-history": "Volver a la página del historial",
 	"bs-visualdiff-error-oldid-invalid": "La revisión de base provista no es válida.",
 	"bs-visualdiff-error-diff-invalid": "La revisión diff provista no es válida.",
+	"bs-visualdiff-popup-next": "Próximo&nbsp;cambio",
+	"bs-visualdiff-popup-prev": "Cambio&nbsp;anterior",
 	"bs-visualdiff-classicdiffengine-tab": "Clásico",
 	"bs-visualdiff-htmldiffengine-tab": "Visual",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
