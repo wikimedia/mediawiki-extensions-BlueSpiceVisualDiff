@@ -2,7 +2,9 @@
 	"@metadata": {
 		"authors": [
 			"Kly",
-			"Tranve"
+			"Tranve",
+			"Diskdance",
+			"Winston Sung"
 		]
 	},
 	"bs-visualdiff-extension-description": "格式化顯示兩個修訂之間不同的內容",
@@ -13,7 +15,7 @@
 	"bs-visualdiff-popup-prev": "前一個&nbsp;更改",
 	"bs-visualdiff-classicdiffengine-tab": "典型",
 	"bs-visualdiff-htmldiffengine-tab": "視覺化",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "wikitext",
 	"bs-visualdiff-removed-text": "此元素已移除",
 	"bs-visualdiff-added-text": "此元素已添加",
 	"bs-visualdiff-changed-text": "此元素已更改"
