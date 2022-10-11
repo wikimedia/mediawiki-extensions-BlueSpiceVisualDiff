@@ -2,9 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"Elroy",
-			"Romaine"
+			"Romaine",
+			"McDutchie"
 		]
 	},
+	"bs-visualdiff-extension-description": "Opgemaakte weergave van verschillen tussen twee versies.",
+	"bs-visualdiff-return-to-history": "Terug naar de geschiedenispagina",
 	"bs-visualdiff-error-oldid-invalid": "De opgegeven basiswijziging is ongeldig.",
 	"bs-visualdiff-error-diff-invalid": "De opgegeven verschilwijziging is ongeldig.",
 	"bs-visualdiff-popup-next": "Volgende&nbsp;wijziging",
