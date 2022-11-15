@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
-			"Stefano"
+			"Stefano",
+			"GpieroMW"
 		]
 	},
 	"bs-visualdiff-removed-text": "Questo elemento è stato eliminato",
+	"bs-visualdiff-added-text": "Questo elemento è stato aggiunto",
 	"bs-visualdiff-changed-text": "Questo elemento è stato modificato"
 }
