@@ -84,14 +84,11 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 				Profiler::instance()
 			);
 		} else {
-			$vHttpEngine = Http::$httpEngine;
-			Http::$httpEngine = 'curl';
-			$oRequest = MWHttpRequest::factory(
+			$oRequest = MediaWikiServices::getInstance()->getHttpRequestFactory()->create(
 				wfExpandUrl( $sUrl ),
 				$options,
 				__METHOD__
 			);
-			Http::$httpEngine = $vHttpEngine;
 		}
 		$oStatus = $oRequest->execute();
 

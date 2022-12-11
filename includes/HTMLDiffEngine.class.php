@@ -80,13 +80,10 @@ class HTMLDiffEngine extends DiffEngine {
 				Profiler::instance()
 			);
 		} else {
-			$vHttpEngine = Http::$httpEngine;
-			Http::$httpEngine = 'curl';
-			$oRequest = MWHttpRequest::factory(
+			$oRequest = MediaWikiServices::getInstance()->getHttpRequestFactory()->create(
 				wfExpandUrl( $sUrl ),
 				$options
 			);
-			Http::$httpEngine = $vHttpEngine;
 		}
 
 		$oStatus = $oRequest->execute();
