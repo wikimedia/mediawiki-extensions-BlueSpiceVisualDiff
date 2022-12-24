@@ -51,6 +51,9 @@
 	"AutoloadNamespaces": {
 		"BlueSpice\\VisualDiff\\": "src/"
 	},
+	"TestAutoloadNamespaces": {
+		"BlueSpice\\VisualDiff\\Tests\\": "tests/phpunit/"
+	},
 	"ResourceModules": {
 		"ext.bluespice.visualDiff.styles": {
 			"styles": [
