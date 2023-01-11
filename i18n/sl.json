@@ -4,5 +4,16 @@
 			"Eleassar"
 		]
 	},
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Vikibesedilo"
+	"bs-visualdiff-extension-description": "Oblikovan prikaz razlik med dvema redakcijama.",
+	"bs-visualdiff-return-to-history": "Nazaj na stran zgodovine",
+	"bs-visualdiff-error-oldid-invalid": "Predložena osnovna redakcija je neveljavna.",
+	"bs-visualdiff-error-diff-invalid": "Predložena redakcija razlike je neveljavna.",
+	"bs-visualdiff-popup-next": "Naslednja&nnbsp;sprememba",
+	"bs-visualdiff-popup-prev": "Prejšnja&nbsp;sprememba",
+	"bs-visualdiff-classicdiffengine-tab": "Klasično",
+	"bs-visualdiff-htmldiffengine-tab": "Vizualno",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Vikibesedilo",
+	"bs-visualdiff-removed-text": "Ta element je bil odstranjen",
+	"bs-visualdiff-added-text": "Ta element je bil dodan",
+	"bs-visualdiff-changed-text": "Ta element je bil spremenjen"
 }
