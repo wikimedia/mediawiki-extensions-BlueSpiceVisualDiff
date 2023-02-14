@@ -4,7 +4,16 @@
 			"Amire80"
 		]
 	},
+	"bs-visualdiff-extension-description": "תצוגה מעוצבת של הבדלים בין שתי גרסאות.",
+	"bs-visualdiff-return-to-history": "חזרה לדף ההיסטוריה",
+	"bs-visualdiff-error-oldid-invalid": "גרסת הבסיס שסופקה אינה תקינה.",
+	"bs-visualdiff-error-diff-invalid": "הגרסה שסופקה לקבלת ההבדלים אינה תקינה.",
+	"bs-visualdiff-popup-next": "השינוי&nbsp;הבא",
+	"bs-visualdiff-popup-prev": "שינוי&nbsp;קודם",
 	"bs-visualdiff-classicdiffengine-tab": "קלאסי",
 	"bs-visualdiff-htmldiffengine-tab": "חזותי",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "קוד ויקי"
+	"bs-visualdiff-unifiedtextdiffengine-tab": "קוד ויקי",
+	"bs-visualdiff-removed-text": "הרכיב הזה הוסר",
+	"bs-visualdiff-added-text": "הרכיב הזה נוסף",
+	"bs-visualdiff-changed-text": "הרכיב הזה שוּנה"
 }
