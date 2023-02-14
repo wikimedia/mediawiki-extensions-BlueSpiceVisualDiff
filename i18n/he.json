@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Amire80"
+		]
+	},
+	"bs-visualdiff-classicdiffengine-tab": "קלאסי",
+	"bs-visualdiff-htmldiffengine-tab": "חזותי",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "קוד ויקי"
+}
