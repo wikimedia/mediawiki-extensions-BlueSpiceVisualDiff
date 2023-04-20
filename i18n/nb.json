@@ -4,10 +4,10 @@
 			"Jon Harald Søby"
 		]
 	},
-	"bs-visualdiff-extension-description": "Formatert visning av forskjeller mellom to revisjoner.",
+	"bs-visualdiff-extension-description": "Formatert visning av forskjeller mellom to sideversjoner.",
 	"bs-visualdiff-return-to-history": "Returner til historikksiden",
-	"bs-visualdiff-error-oldid-invalid": "Den gitte grunnrevisjonen er ugyldig.",
-	"bs-visualdiff-error-diff-invalid": "Den gitte diffrevisjonen er ugyldig.",
+	"bs-visualdiff-error-oldid-invalid": "Den gitte grunnversjonen er ugyldig.",
+	"bs-visualdiff-error-diff-invalid": "Den gitte diffsideversjonen er ugyldig.",
 	"bs-visualdiff-popup-next": "Neste&nbsp;endring",
 	"bs-visualdiff-popup-prev": "Forrige&nbsp;endring",
 	"bs-visualdiff-classicdiffengine-tab": "Klassisk",
