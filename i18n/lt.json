@@ -1,8 +1,19 @@
 {
 	"@metadata": {
 		"authors": [
+			"Nokeoo",
 			"Tomasdd"
 		]
 	},
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Vikitekstas"
+	"bs-visualdiff-extension-description": "Suformatuotas dviejų versijų skirtumų rodymas.",
+	"bs-visualdiff-return-to-history": "Grįžti į istorijos puslapį",
+	"bs-visualdiff-error-oldid-invalid": "Pateikta pagrindinė versija negalima.",
+	"bs-visualdiff-popup-next": "Kitas&nbsp;keitimas",
+	"bs-visualdiff-popup-prev": "Ankstesnis&nbsp;keitimas",
+	"bs-visualdiff-classicdiffengine-tab": "Klasikinis",
+	"bs-visualdiff-htmldiffengine-tab": "Vizualus",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Vikitekstas",
+	"bs-visualdiff-removed-text": "Šis elementas buvo pašalintas",
+	"bs-visualdiff-added-text": "Šis elementas buvo pridėtas",
+	"bs-visualdiff-changed-text": "Šis elementas buvo pakeistas"
 }
