@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Krisztina"
+		]
+	},
+	"bs-visualdiff-extension-description": "A két változat közötti különbségek formázott megjelenítése.",
+	"bs-visualdiff-return-to-history": "Visszalépés az előzmények oldalra",
+	"bs-visualdiff-error-oldid-invalid": "A megadott alapváltozat érvénytelen.",
+	"bs-visualdiff-error-diff-invalid": "A megadott változat érvénytelen.",
+	"bs-visualdiff-popup-next": "Következő&nbsp;változás",
+	"bs-visualdiff-popup-prev": "Előző&nbsp;változás",
+	"bs-visualdiff-classicdiffengine-tab": "Klasszikus",
+	"bs-visualdiff-htmldiffengine-tab": "Vizuális",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikiszöveg",
+	"bs-visualdiff-removed-text": "Ez az elem törlésre került",
+	"bs-visualdiff-added-text": "Ez az elem hozzáadásra került",
+	"bs-visualdiff-changed-text": "Ez az elem megváltozott"
+}
