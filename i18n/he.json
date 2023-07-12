@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Amire80"
+			"Amire80",
+			"Neriah"
 		]
 	},
 	"bs-visualdiff-extension-description": "תצוגה מעוצבת של הבדלים בין שתי גרסאות.",
@@ -15,5 +16,5 @@
 	"bs-visualdiff-unifiedtextdiffengine-tab": "קוד ויקי",
 	"bs-visualdiff-removed-text": "הרכיב הזה הוסר",
 	"bs-visualdiff-added-text": "הרכיב הזה נוסף",
-	"bs-visualdiff-changed-text": "הרכיב הזה שוּנה"
+	"bs-visualdiff-changed-text": "הרכיב הזה שונה"
 }
