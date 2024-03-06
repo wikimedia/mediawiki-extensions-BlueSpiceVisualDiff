@@ -9,14 +9,13 @@ use RequestContext;
 
 abstract class DiffEngine implements IDiffEngine {
 
-	/**
-	 *
-	 * @var Config
-	 */
-	protected $config = null;
+	/** @var Config */
+	protected $config;
+
+	/** @var string */
+	protected $name = '';
 
 	/**
-	 *
 	 * @param string $name
 	 * @param Config $config
 	 */
@@ -45,7 +44,6 @@ abstract class DiffEngine implements IDiffEngine {
 	abstract protected function getLabelMsgKey();
 
 	/**
-	 *
 	 * @param string $name
 	 * @param MediaWikiServices $services
 	 * @param Config $config
@@ -54,5 +52,4 @@ abstract class DiffEngine implements IDiffEngine {
 	public static function factory( $name, MediaWikiServices $services, Config $config ) {
 		return new static( $name, $config );
 	}
-
 }

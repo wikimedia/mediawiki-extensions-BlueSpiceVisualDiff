@@ -1,7 +1,7 @@
 <?php
 
 use BlueSpice\VisualDiff\DiffEngine;
-use BlueSpice\VisualDiff\Http\Curl11;
+use GuzzleHttp\Client;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 use Wikimedia\AtEase\AtEase;
@@ -9,7 +9,6 @@ use Wikimedia\AtEase\AtEase;
 class HTMLDiffEngine extends DiffEngine {
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getLabelMsgKey() {
@@ -17,93 +16,84 @@ class HTMLDiffEngine extends DiffEngine {
 	}
 
 	/**
-	 *
-	 * @param RevisionRecord $oOldRevision
-	 * @param RevisionRecord $oDiffRevision
+	 * @param RevisionRecord $oldRevision
+	 * @param RevisionRecord $diffRevision
 	 * @return string The HTML for display in diff
 	 */
-	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
+	public function showDiffPage( $oldRevision, $diffRevision ) {
 		// Now let's get the diff
 		// ensure that the directory exits, otherwise create it
 		BsFileSystemHelper::ensureCacheDirectory( 'VisualDiff' );
-		$sTmpPath = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
+		$cacheDir = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
 		// TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
-		$this->cleanTmpPath( $sTmpPath );
+		$this->cleanTmpPath( $cacheDir );
 
-		$sResultFile = $sTmpPath
+		$filename = $cacheDir
 			. '/result_'
-			. $oOldRevision->getId()
+			. $oldRevision->getId()
 			. '_'
-			. $oDiffRevision->getId()
+			. $diffRevision->getId()
 			. '.html';
 
-		if ( file_exists( $sResultFile ) ) {
+		if ( file_exists( $filename ) ) {
 			// In this case we don't need to recalculate
-			wfDebugLog( 'VisualDiff', 'Using file ' . $sResultFile . ' from cache' );
-			return $this->outputVisualDiff( $sResultFile );
+			wfDebugLog( 'VisualDiff', 'Using file ' . $filename . ' from cache' );
+			return $this->outputVisualDiff( $filename );
 		}
 
 		// Get the HTML strings
 		$user = RequestContext::getMain()->getUser();
-		$sOldHTML  = $this->getRevisionHTML( $oOldRevision, $sTmpPath, $user );
-		$sDiffHTML = $this->getRevisionHTML( $oDiffRevision, $sTmpPath, $user );
+		$oldHTMLPath  = $this->getRevisionHTML( $oldRevision, $cacheDir, $user );
+		$diffHTMLPath = $this->getRevisionHTML( $diffRevision, $cacheDir, $user );
 
-		$aParams = [
+		$params = [
 			'type' => 'html',
 			'wikiId' => WikiMap::getCurrentWikiId()
 		];
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {
-			$aParams['debug'] = "true";
+			$params['debug'] = "true";
 		}
 
-		$sUrl = wfAppendQuery(
+		$url = wfAppendQuery(
 			$config->get( 'VisualDiffHtmlDiffEngineUrl' ) . '/RenderDiff',
-			$aParams
+			$params
 		);
 
 		$options = [
 			'timeout' => 120,
-			'method' => 'POST',
-			'postData' => [
-				'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldHTML ) : '@' . $sOldHTML,
-				'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffHTML ) : '@' . $sDiffHTML
-			]
+			'multipart' => [
+				[
+					'name'     => 'old',
+					'filename' => basename( $oldHTMLPath ),
+					'contents' => file_get_contents( $oldHTMLPath ),
+				],
+				[
+					'name'     => 'diff',
+					'filename' => basename( $diffHTMLPath ),
+					'contents' => file_get_contents( $diffHTMLPath ),
+				]
+			],
 		];
-		if ( $config->get( 'VisualDiffForceCurlHttp11' ) ) {
-			$oRequest = new Curl11(
-				wfExpandUrl( $sUrl ),
-				$options,
-				__METHOD__,
-				Profiler::instance()
-			);
-		} else {
-			$vHttpEngine = Http::$httpEngine;
-			Http::$httpEngine = 'curl';
-			$oRequest = MWHttpRequest::factory(
-				wfExpandUrl( $sUrl ),
-				$options
-			);
-			Http::$httpEngine = $vHttpEngine;
+
+		$urlExpanded = $services->getUrlUtils()->expand( $url, PROTO_CURRENT );
+		$client = new Client( $options );
+		try {
+			$response = $client->request( 'POST', $urlExpanded, $options );
+			$contents = $response->getBody()->getContents();
+		} catch ( Exception $e ) {
+			throw new MWException( $e->getMessage() );
 		}
 
-		$oStatus = $oRequest->execute();
+		file_put_contents( $filename, $contents );
+		$this->cleanResultHTML( $filename );
 
-		if ( !$oStatus->isOK() ) {
-			throw new MWException( $oStatus->getMessage() );
-		}
-
-		$sResponse = $oRequest->getContent();
-		file_put_contents( $sResultFile, $sResponse );
-
-		$this->cleanResultHTML( $sResultFile );
-		return $this->outputVisualDiff( $sResultFile );
+		return $this->outputVisualDiff( $filename );
 	}
 
 	/**
-	 *
 	 * @param string $outfile
 	 * @return string
 	 */
@@ -113,7 +103,6 @@ class HTMLDiffEngine extends DiffEngine {
 	}
 
 	/**
-	 *
 	 * @param string $sPath
 	 */
 	protected function cleanTmpPath( $sPath ) {
@@ -136,32 +125,36 @@ class HTMLDiffEngine extends DiffEngine {
 	/**
 	 * Renders the HTML of a Revision that should be compared
 	 * @param RevisionRecord $oRevision
-	 * @param string $sTmpPath
+	 * @param string $cacheDir
 	 * @param User $user
 	 * @return string The revisions HTML representation
 	 */
-	protected function getRevisionHTML( $oRevision, $sTmpPath, User $user ) {
+	protected function getRevisionHTML( $oRevision, $cacheDir, User $user ) {
 		// TODO RBV (19.06.12 15:05): Use API to render?
 		// TODO RBV (21.06.12 11:55): Use PageContentProvider to render? (see "<source> tag ticket")
 		// TODO RBV (21.06.12 12:08): To the contructor?
 		$oParserOptions = ParserOptions::newFromUser( $user );
+		$content = $oRevision->getContent( 'main' );
+		$text = ( $content instanceof TextContent ) ? $content->getText() : '';
+
 		$oParserOutput = MediaWikiServices::getInstance()->getParser()->parse(
-			ContentHandler::getContentText( $oRevision->getContent( 'main' ) ),
+			$text,
 			Title::newFromID( $oRevision->getPageId() ),
 			$oParserOptions
 		);
 
-		$sFilePath = "$sTmpPath/{$oRevision->getId()}.html";
+		$sFilePath = "$cacheDir/{$oRevision->getId()}.html";
 
 		file_put_contents( $sFilePath, $oParserOutput->getText( [
 			'enableSectionEditLinks' => false
 		] ) );
+
 		return $sFilePath;
 	}
 
 	/**
 	 * Special transformation for DaisyDiff output
-	 * @param type $sOutfile
+	 * @param string $sOutfile
 	 */
 	protected function cleanResultHTML( $sOutfile ) {
 		// In a diff html there may be duplicate IDs which results in warnings

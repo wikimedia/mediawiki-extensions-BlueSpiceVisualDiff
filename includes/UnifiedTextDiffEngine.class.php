@@ -1,13 +1,12 @@
 <?php
 
-use BlueSpice\VisualDiff\Http\Curl11;
+use GuzzleHttp\Client;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Revision\RevisionRecord;
 
 class UnifiedTextDiffEngine extends HTMLDiffEngine {
 
 	/**
-	 *
 	 * @return string
 	 */
 	protected function getLabelMsgKey() {
@@ -15,99 +14,94 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 	}
 
 	/**
-	 *
-	 * @param RevisionRecord $oOldRevision
-	 * @param RevisionRecord $oDiffRevision
+	 * @param RevisionRecord $oldRevision
+	 * @param RevisionRecord $diffRevision
 	 * @return string
 	 */
-	public function showDiffPage( $oOldRevision, $oDiffRevision ) {
+	public function showDiffPage( $oldRevision, $diffRevision ) {
 		// Now let's get the diff
-		$sTmpPath = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
+		$cacheDir = BsFileSystemHelper::getCacheDirectory( 'VisualDiff' );
 		// TODO RBV (01.08.12 13:33): TmpPath may not be web accessible
-		$this->cleanTmpPath( $sTmpPath );
+		$this->cleanTmpPath( $cacheDir );
 
-		$sResultFile = $sTmpPath
+		$filename = $cacheDir
 			. '/result_ut_'
-			. $oOldRevision->getId()
+			. $oldRevision->getId()
 			. '_'
-			. $oDiffRevision->getId()
+			. $diffRevision->getId()
 			. '.html';
 
-		if ( file_exists( $sResultFile ) ) {
+		if ( file_exists( $filename ) ) {
 			// In this case we don't need to recalculate
-			wfDebugLog( 'VisualDiff', 'Using file ' . $sResultFile . ' from cache' );
-			return $this->outputVisualDiff( $sResultFile );
+			wfDebugLog( 'VisualDiff', 'Using file ' . $filename . ' from cache' );
+			return $this->outputVisualDiff( $filename );
 		}
 
 		// Get the WIKI content
-		$sOldWIKI = "$sTmpPath/{$oOldRevision->getId()}.wiki";
+		$oldWikiPath = "$cacheDir/{$oldRevision->getId()}.wiki";
+		$oldContent = $oldRevision->getContent( 'main' );
+		$oldText = ( $oldContent instanceof TextContent ) ? $oldContent->getText() : '';
 		file_put_contents(
-			$sOldWIKI,
-			ContentHandler::getContentText( $oOldRevision->getContent( 'main' ) )
+			$oldWikiPath,
+			$oldText
 		);
-		$sDiffWIKI = "$sTmpPath/{$oDiffRevision->getId()}.wiki";
+		$diffWikiPath = "$cacheDir/{$diffRevision->getId()}.wiki";
+		$diffContent = $diffRevision->getContent( 'main' );
+		$diffText = ( $diffContent instanceof TextContent ) ? $diffContent->getText() : '';
 		file_put_contents(
-			$sDiffWIKI,
-			ContentHandler::getContentText( $oDiffRevision->getContent( 'main' ) )
+			$diffWikiPath,
+			$diffText
 		);
 
-		$aParams = [
+		$params = [
 			'type' => 'tag',
 			'wikiId' => WikiMap::getCurrentWikiId()
 		];
 
-		$config = MediaWikiServices::getInstance()->getConfigFactory()
-			->makeConfig( 'bsg' );
+		$services = MediaWikiServices::getInstance();
+		$config = $services->getConfigFactory()->makeConfig( 'bsg' );
 
 		if ( $config->get( 'TestMode' ) ) {
-			$aParams['debug'] = "true";
+			$params['debug'] = "true";
 		}
 
 		$sUrl = wfAppendQuery(
 			$config->get( 'VisualDiffHtmlDiffEngineUrl' ) . '/RenderDiff',
-			$aParams
+			$params
 		);
 
 		$options = [
 			'timeout' => 120,
-			'method' => 'POST',
-			'postData' => [
-				'old'  => class_exists( 'CURLFile' ) ? new CURLFile( $sOldWIKI ) : '@' . $sOldWIKI,
-				'diff' => class_exists( 'CURLFile' ) ? new CURLFile( $sDiffWIKI ) : '@' . $sDiffWIKI
-			]
+			'multipart' => [
+				[
+					'name'     => 'old',
+					'filename' => basename( $oldWikiPath ),
+					'contents' => file_get_contents( $oldWikiPath )
+				],
+				[
+					'name'     => 'diff',
+					'filename' => basename( $diffWikiPath ),
+					'contents' => file_get_contents( $diffWikiPath ),
+				]
+			],
 		];
-		if ( $config->get( 'VisualDiffForceCurlHttp11' ) ) {
-			$oRequest = new Curl11(
-				wfExpandUrl( $sUrl ),
-				$options,
-				__METHOD__,
-				Profiler::instance()
-			);
-		} else {
-			$vHttpEngine = Http::$httpEngine;
-			Http::$httpEngine = 'curl';
-			$oRequest = MWHttpRequest::factory(
-				wfExpandUrl( $sUrl ),
-				$options,
-				__METHOD__
-			);
-			Http::$httpEngine = $vHttpEngine;
-		}
-		$oStatus = $oRequest->execute();
 
-		if ( !$oStatus->isOK() ) {
-			throw new MWException( $oStatus->getMessage() );
+		$urlExpanded = $services->getUrlUtils()->expand( $sUrl, PROTO_CURRENT );
+		$client = new Client( $options );
+		try {
+			$response = $client->request( 'POST', $urlExpanded, $options );
+			$contents = $response->getBody()->getContents();
+		} catch ( Exception $e ) {
+			throw new MWException( $e->getMessage() );
 		}
 
-		$sResponse = $oRequest->getContent();
-		file_put_contents( $sResultFile, $sResponse );
+		file_put_contents( $filename, $contents );
+		$this->cleanResultHTML( $filename );
 
-		$this->cleanResultHTML( $sResultFile );
-		return $this->outputVisualDiff( $sResultFile );
+		return $this->outputVisualDiff( $filename );
 	}
 
 	/**
-	 *
 	 * @param string $outfile
 	 * @return string
 	 */
@@ -117,6 +111,7 @@ class UnifiedTextDiffEngine extends HTMLDiffEngine {
 		// DaisyDiff returns oldschhol <br>
 		$resulttext = preg_replace( '#<br><br>#si', "\n", $resulttext );
 		$resulttext = preg_replace( '#<br>#si', "", $resulttext );
+
 		return '<div class="UnifiedTextDiffEngine"><pre>' . $resulttext . '</pre></div>';
 	}
 }

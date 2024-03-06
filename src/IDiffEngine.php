@@ -6,8 +6,8 @@ use MediaWiki\Revision\RevisionRecord;
 use Message;
 
 interface IDiffEngine {
+
 	/**
-	 *
 	 * @param RevisionRecord $oldRevision
 	 * @param RevisionRecord $diffRevision
 	 * @return string The HTML for display in diff

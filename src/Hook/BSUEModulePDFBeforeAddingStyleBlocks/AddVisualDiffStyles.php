@@ -32,5 +32,4 @@ HEREDOC;
 
 		return true;
 	}
-
 }

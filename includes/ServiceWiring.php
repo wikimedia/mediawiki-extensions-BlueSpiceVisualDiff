@@ -10,7 +10,6 @@ use MediaWiki\MediaWikiServices;
 // @codeCoverageIgnoreStart
 
 return [
-
 	'BSVisualDiffDiffEngineFactory' => static function ( MediaWikiServices $services ) {
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceVisualDiffDiffEngineRegistry'
@@ -20,8 +19,7 @@ return [
 			$services,
 			$services->getConfigFactory()->makeConfig( 'bsg' )
 		);
-	},
-
+	}
 ];
 
 // @codeCoverageIgnoreEnd

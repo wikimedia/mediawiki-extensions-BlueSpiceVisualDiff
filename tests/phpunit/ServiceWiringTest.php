@@ -19,6 +19,7 @@ use MediaWikiIntegrationTestCase;
  * @group BlueSpice
  */
 class ServiceWiringTest extends MediaWikiIntegrationTestCase {
+
 	/**
 	 * @dataProvider provideService
 	 */
