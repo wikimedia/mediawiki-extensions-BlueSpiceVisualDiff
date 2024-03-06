@@ -86,9 +86,6 @@
 	"config": {
 		"VisualDiffHtmlDiffEngineUrl": {
 			"value": "http://localhost:8080/BShtmlDiff"
-		},
-		"VisualDiffForceCurlHttp11": {
-			"value": false
 		}
 	},
 	"Hooks": {

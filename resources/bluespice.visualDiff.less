@@ -1,26 +1,25 @@
 
-#difftabs span[class^='diff-html-'] > img {
+#difftabs span[ class^='diff-html-' ] > img {
 	background-color: none;
 	border-width: 3px;
-	border-style:  solid;
+	border-style: solid;
 }
 
-#difftabs .diff-html-added > img{
-	border-color: #ccffcc;
+#difftabs .diff-html-added > img {
+	border-color: #cfc;
 }
 
-#difftabs .diff-html-removed > img{
+#difftabs .diff-html-removed > img {
 	border-color: #fdc6c6;
 }
 
-#difftabs .diff-html-changed > img{
+#difftabs .diff-html-changed > img {
 	border-color: #c6c6fd;
 }
 
-#difftabs .diff-html-conflict > img{
+#difftabs .diff-html-conflict > img {
 	border-color: #f781be;
 }
-
 
 #difftabslist {
 	display: table;
@@ -64,9 +63,10 @@ body.mediawiki #content #difftabslist > li > a:hover {
 }
 
 #difftabslist li.ui-state-active {
-	background-color: rgb(152, 167, 196);
+	background-color: rgb( 152, 167, 196 );
+
 	a {
-		border-bottom-color: #FFAE00;
+		border-bottom-color: #ffae00;
 	}
 }
 
@@ -101,22 +101,30 @@ table.revisiontable {
 }
 
 .diff-html-changed {
-	border-bottom: 2px dashed #c6c6fd
+	border-bottom: 2px dashed #c6c6fd;
 }
 
 span.diff-html-selected.diff-html-removed {
-	background-color: #FACE66;
+	background-color: #face66;
 }
 
 span.diff-html-selected.diff-html-added {
-	background-color: #70BAFF;
+	background-color: #70baff;
 }
 
 span.diff-html-selected.diff-html-changed {
-	border-color: #7A7AFA;
+	border-color: #7a7afa;
 }
 
-div.UnifiedTextDiffEngine pre{
+div.UnifiedTextDiffEngine pre {
 	font-size: 80%;
 	font-weight: normal;
+}
+
+#mw-content-text .mw-revslider-container {
+	display: none;
+}
+
+#mw-content-text .ve-init-mw-diffPage-diffMode {
+	display: none;
 }

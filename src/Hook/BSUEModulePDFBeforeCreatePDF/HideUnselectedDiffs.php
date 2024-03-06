@@ -7,7 +7,6 @@ use DOMXPath;
 class HideUnselectedDiffs extends BSUEModulePDFBeforeCreatePDF {
 
 	/**
-	 *
 	 * @return bool
 	 */
 	protected function doProcess() {
@@ -23,5 +22,4 @@ class HideUnselectedDiffs extends BSUEModulePDFBeforeCreatePDF {
 		}
 		return true;
 	}
-
 }

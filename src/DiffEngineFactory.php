@@ -7,32 +7,28 @@ use Config;
 use MediaWiki\MediaWikiServices;
 
 class DiffEngineFactory {
+
 	/**
-	 *
 	 * @var ExtensionAttributeBasedRegistry
 	 */
 	protected $diffEngineRegistry = null;
 
 	/**
-	 *
 	 * @var MediaWikiServices
 	 */
 	protected $services = null;
 
 	/**
-	 *
 	 * @var Config
 	 */
 	protected $config = null;
 
 	/**
-	 *
 	 * @var IDiffEngine[]
 	 */
 	protected $diffEngines = [];
 
 	/**
-	 *
 	 * @param ExtensionAttributeBasedRegistry $diffEngineRegistry
 	 * @param MediaWikiServices $services
 	 * @param Config $config
@@ -45,7 +41,6 @@ class DiffEngineFactory {
 	}
 
 	/**
-	 *
 	 * @param string $name
 	 * @return IDiffEngine|null
 	 */
@@ -68,7 +63,6 @@ class DiffEngineFactory {
 	}
 
 	/**
-	 *
 	 * @return IDiffEngine[]
 	 */
 	public function getDiffEngines() {
@@ -82,5 +76,4 @@ class DiffEngineFactory {
 		}
 		return $diffEngines;
 	}
-
 }

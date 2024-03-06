@@ -253,5 +253,4 @@ class AddTabbedDiffEngines extends ArticleContentOnDiff {
 
 		return $aResult;
 	}
-
 }
