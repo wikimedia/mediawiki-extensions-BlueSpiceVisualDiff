@@ -203,7 +203,8 @@ class AddTabbedDiffEngines extends ArticleContentOnDiff {
 		}
 
 		foreach ( $aFirstLevelNodes as $oNode ) {
-			if ( $oNode instanceof DOMElement == false ) { continue;
+			if ( $oNode instanceof DOMElement == false ) {
+				continue;
 			}
 			$aNodeClasses = explode( ' ', $oNode->getAttribute( 'class' ) );
 			if ( $oNode->nodeName == 'table' && in_array( 'diff', $aNodeClasses ) ) {
