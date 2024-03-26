@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ebraminio",
 			"FarsiNevis",
 			"Jeeputer"
 		]
@@ -14,7 +15,7 @@
 	"bs-visualdiff-classicdiffengine-tab": "کلاسیک",
 	"bs-visualdiff-htmldiffengine-tab": "دیداری",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "ویکی‌متن",
-	"bs-visualdiff-removed-text": "این عنصر حذف شده‌است",
-	"bs-visualdiff-added-text": "این عنصر افزوده شده‌است",
-	"bs-visualdiff-changed-text": "این عنصر تغییر یافته‌است"
+	"bs-visualdiff-removed-text": "این عنصر حذف شده است",
+	"bs-visualdiff-added-text": "این عنصر افزوده شده است",
+	"bs-visualdiff-changed-text": "این عنصر تغییر یافته است"
 }
