@@ -1,0 +1,14 @@
+{
+	"@metadata": {
+		"authors": [
+			"Yurina Tatiana"
+		]
+	},
+	"bs-visualdiff-return-to-history": "Вернуться на страницу истории",
+	"bs-visualdiff-classicdiffengine-tab": "Классический",
+	"bs-visualdiff-htmldiffengine-tab": "Визуальный",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Вики-текст",
+	"bs-visualdiff-removed-text": "Этот элемент был удалён",
+	"bs-visualdiff-added-text": "Этот элемент был добавлен",
+	"bs-visualdiff-changed-text": "Этот элемент был изменён"
+}
