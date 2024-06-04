@@ -197,7 +197,8 @@ class HTMLDiffEngine extends DiffEngine {
 			// Let's build standard conformant attributes
 			$aModAttr = [ 'previous', 'next', 'changeid', 'changes', 'changetype' ];
 			foreach ( $aModAttr as $sAttr ) {
-				if ( !$oElement->hasAttribute( $sAttr ) ) { continue;
+				if ( !$oElement->hasAttribute( $sAttr ) ) {
+					continue;
 				}
 				$oElement->setAttribute( 'data-' . $sAttr, $oElement->getAttribute( $sAttr ) );
 				$oElement->removeAttribute( $sAttr );

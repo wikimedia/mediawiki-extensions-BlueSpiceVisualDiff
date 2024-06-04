@@ -45,8 +45,8 @@
 		]
 	},
 	"AutoloadClasses": {
-		"HTMLDiffEngine": "includes/HTMLDiffEngine.class.php",
-		"UnifiedTextDiffEngine": "includes/UnifiedTextDiffEngine.class.php"
+		"HTMLDiffEngine": "includes/HTMLDiffEngine.php",
+		"UnifiedTextDiffEngine": "includes/UnifiedTextDiffEngine.php"
 	},
 	"AutoloadNamespaces": {
 		"BlueSpice\\VisualDiff\\": "src/"
