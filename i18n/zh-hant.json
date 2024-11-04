@@ -4,15 +4,16 @@
 			"Diskdance",
 			"Kly",
 			"Tranve",
-			"Winston Sung"
+			"Winston Sung",
+			"沈澄心"
 		]
 	},
-	"bs-visualdiff-extension-description": "格式化顯示兩個修訂之間不同的內容",
+	"bs-visualdiff-extension-description": "格式化顯示兩個修訂之間不同的內容。",
 	"bs-visualdiff-return-to-history": "返回到歷史頁面",
 	"bs-visualdiff-error-oldid-invalid": "提供的基準修訂無效。",
 	"bs-visualdiff-error-diff-invalid": "提供的差異修訂無效。",
-	"bs-visualdiff-popup-next": "下一個&nbsp;更改",
-	"bs-visualdiff-popup-prev": "前一個&nbsp;更改",
+	"bs-visualdiff-popup-next": "下一個更改",
+	"bs-visualdiff-popup-prev": "前一個更改",
 	"bs-visualdiff-classicdiffengine-tab": "典型",
 	"bs-visualdiff-htmldiffengine-tab": "視覺化",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "wikitext",
