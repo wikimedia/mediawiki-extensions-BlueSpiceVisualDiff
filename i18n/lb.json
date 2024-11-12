@@ -1,12 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"bs-visualdiff-popup-next": "Nächst&nbsp;Ännerung",
+	"bs-visualdiff-popup-prev": "Vireg&nbsp;Ännerung",
 	"bs-visualdiff-classicdiffengine-tab": "Klassesch",
 	"bs-visualdiff-htmldiffengine-tab": "Visuell",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
 	"bs-visualdiff-removed-text": "Dëst Element gouf ewechgeholl",
 	"bs-visualdiff-added-text": "Dëst Element gouf derbäigesat",
 	"bs-visualdiff-changed-text": "Dëst Element gouf geännert"

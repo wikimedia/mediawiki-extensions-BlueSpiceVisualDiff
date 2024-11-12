@@ -3,9 +3,16 @@
 		"authors": [
 			"Diskdance",
 			"Lakejason0",
-			"Tranve"
+			"Tranve",
+			"沈澄心"
 		]
 	},
+	"bs-visualdiff-extension-description": "格式化显示两个修订版本之间的差异。",
+	"bs-visualdiff-return-to-history": "返回历史页面",
+	"bs-visualdiff-error-oldid-invalid": "提供的基准修订无效。",
+	"bs-visualdiff-error-diff-invalid": "提供的差异修订无效。",
+	"bs-visualdiff-popup-next": "下一个更改",
+	"bs-visualdiff-popup-prev": "上一个更改",
 	"bs-visualdiff-classicdiffengine-tab": "经典",
 	"bs-visualdiff-htmldiffengine-tab": "可视化",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "WikiText",
