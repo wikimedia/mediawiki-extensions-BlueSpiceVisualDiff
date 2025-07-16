@@ -4,6 +4,11 @@
 			"Умар"
 		]
 	},
+	"bs-visualdiff-return-to-history": "Историн агӀонна тӀе йухагӀо",
+	"bs-visualdiff-classicdiffengine-tab": "Классикин",
 	"bs-visualdiff-htmldiffengine-tab": "БӀаьра",
-	"bs-visualdiff-unifiedtextdiffengine-tab": "Вики-текст"
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Вики-текст",
+	"bs-visualdiff-removed-text": "ХӀара элемент дӀайаьккхина",
+	"bs-visualdiff-added-text": "ХӀара элемент тӀетоьхна",
+	"bs-visualdiff-changed-text": "ХӀара элемент хийцина"
 }
