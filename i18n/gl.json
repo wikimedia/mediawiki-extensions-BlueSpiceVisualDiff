@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Toliño"
+		]
+	},
+	"bs-visualdiff-extension-description": "Visualización formatada das diferenzas entre dúas revisións.",
+	"bs-visualdiff-return-to-history": "Volver á páxina do historial",
+	"bs-visualdiff-error-oldid-invalid": "A revisión base proporcionada non é válida.",
+	"bs-visualdiff-error-diff-invalid": "A revisión de diferenza proporcionada non é válida.",
+	"bs-visualdiff-popup-next": "Seguinte&nbsp;cambio",
+	"bs-visualdiff-popup-prev": "Cambio&nbsp;anterior",
+	"bs-visualdiff-classicdiffengine-tab": "Clásico",
+	"bs-visualdiff-htmldiffengine-tab": "Visual",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Texto wiki",
+	"bs-visualdiff-removed-text": "Eliminouse este elemento",
+	"bs-visualdiff-added-text": "Engadiuse este elemento",
+	"bs-visualdiff-changed-text": "Modificouse este elemento"
+}
