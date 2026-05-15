@@ -3,13 +3,14 @@
 		"authors": [
 			"Elroy",
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"bs-visualdiff-extension-description": "Opgemaakte weergave van verschillen tussen twee versies.",
 	"bs-visualdiff-return-to-history": "Terug naar de geschiedenispagina",
-	"bs-visualdiff-error-oldid-invalid": "De opgegeven basiswijziging is ongeldig.",
-	"bs-visualdiff-error-diff-invalid": "De opgegeven verschilwijziging is ongeldig.",
+	"bs-visualdiff-error-oldid-invalid": "De opgegeven basisversie is onjuist.",
+	"bs-visualdiff-error-diff-invalid": "De opgegeven verschilversie is onjuist.",
 	"bs-visualdiff-popup-next": "Volgende&nbsp;wijziging",
 	"bs-visualdiff-popup-prev": "Vorige&nbsp;wijziging",
 	"bs-visualdiff-classicdiffengine-tab": "Klassiek",
