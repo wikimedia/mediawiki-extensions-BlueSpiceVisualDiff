@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Tensama0415",
 			"Ykhwong"
 		]
 	},
+	"bs-visualdiff-extension-description": "두 판 간의 차이를 형식화해서 표시합니다.",
 	"bs-visualdiff-return-to-history": "역사 문서로 돌아가기",
+	"bs-visualdiff-error-oldid-invalid": "제공된 기본 판이 유효하지 않습니다.",
+	"bs-visualdiff-error-diff-invalid": "제공된 차이 판이 유효하지 않습니다.",
+	"bs-visualdiff-popup-next": "다음&nbsp;바꾸기",
+	"bs-visualdiff-popup-prev": "이전&nbsp;바꾸기",
+	"bs-visualdiff-classicdiffengine-tab": "고전",
 	"bs-visualdiff-htmldiffengine-tab": "시각",
 	"bs-visualdiff-unifiedtextdiffengine-tab": "위키텍스트",
 	"bs-visualdiff-removed-text": "이 요소는 제거되었습니다",
