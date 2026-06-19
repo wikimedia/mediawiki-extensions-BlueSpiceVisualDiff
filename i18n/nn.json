@@ -1,0 +1,10 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ranveig"
+		]
+	},
+	"bs-visualdiff-removed-text": "Dette elementet er vorte fjerna",
+	"bs-visualdiff-added-text": "Dette elementet er vorte lagt til",
+	"bs-visualdiff-changed-text": "Dette elementet er vorte endra"
+}
