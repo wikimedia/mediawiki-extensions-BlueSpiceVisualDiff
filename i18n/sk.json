@@ -1,0 +1,19 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wizzard"
+		]
+	},
+	"bs-visualdiff-extension-description": "Formátované zobrazenie rozdielov medzi dvoma revíziami.",
+	"bs-visualdiff-return-to-history": "Späť na stránku histórie",
+	"bs-visualdiff-error-oldid-invalid": "Zadaná základná revízia je neplatná.",
+	"bs-visualdiff-error-diff-invalid": "Zadaná revízia rozdielu je neplatná.",
+	"bs-visualdiff-popup-next": "Ďalšia&nbsp;zmena",
+	"bs-visualdiff-popup-prev": "Predchádzajúca&nbsp;zmena",
+	"bs-visualdiff-classicdiffengine-tab": "Klasické",
+	"bs-visualdiff-htmldiffengine-tab": "Vizuálne",
+	"bs-visualdiff-unifiedtextdiffengine-tab": "Wikitext",
+	"bs-visualdiff-removed-text": "Tento prvok bol odstránený",
+	"bs-visualdiff-added-text": "Tento prvok bol pridaný",
+	"bs-visualdiff-changed-text": "Tento prvok bol zmenený"
+}
